@@ -154,7 +154,8 @@ Distributed under the MIT license. See LICENSE for more information.
 
 ## :handshake: Contact
 
-Your Name - [Brian Njogu](https://brayo.co) - email@email_client.com
+Your Name - [Brian Njogu](https://brayo.co) - briancanspit@gmail.com
+
 Project Link: [https://github.com/liltrendi/ai-text-generator-challenge](https://github.com/liltrendi/ai-text-generator-challenge)
 
 <!-- Acknowledgments -->
