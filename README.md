@@ -8,7 +8,7 @@
   </p>
 
 <h4>
-    <a href="#">View Demo</a>
+    <a href="https://ai-text-generator-challenge.vercel.app/">View Demo</a>
   <span> · </span>
     <a href="https://github.com/liltrendi/ai-text-generator-challenge/issues/">Report Bug</a>
   <span> · </span>
@@ -23,6 +23,7 @@
 # :notebook_with_decorative_cover: Table of Contents
 
 -   [About the Project](#star2-about-the-project)
+    -   [Live Demo](#triangular_flag_on_post-live-demo)
     -   [Screenshots](#camera-screenshots)
     -   [Tech Stack](#space_invader-tech-stack)
     -   [Features](#dart-features)
@@ -41,6 +42,12 @@
 ## :star2: About the Project
 
 This is a submission for [this event](https://community.distributed.com/networks/events/117733) by Distributed, whose challenge is to build an operational AI-powered conversational interface that interacts with OpenAI to give responses based on user input.
+
+<!-- Live Demo -->
+
+### :triangular_flag_on_post: Live Demo
+
+This web app is hosted on Vercel. You can try it out here: [OpenAI Text Generator Challenge](https://ai-text-generator-challenge.vercel.app/)
 
 <!-- Screenshots -->
 
