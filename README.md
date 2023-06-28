@@ -55,7 +55,7 @@ This web app is hosted on [Netlify](https://netlify.com) (crucial choice as I ne
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="src/assets/images/demo-chat-ui.svg" alt="screenshot" width="400" height="500" />
+  <img src="public/static/images/demo-chat-ui.svg" alt="screenshot" width="400" height="500" />
 </div>
 
 <!-- TechStack -->
