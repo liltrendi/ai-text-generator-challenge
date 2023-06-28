@@ -10,6 +10,7 @@ export const PageContainer = styled.div`
 `;
 
 export const LoginContainer = styled.div`
+    max-width: 400px;
     @media only screen and (max-width: 600px) {
         padding: 0 15px;
     }
@@ -47,6 +48,10 @@ export const LoginText = styled.p`
 export const EmailContainer = styled.div`
     display: flex;
     flex-direction: column;
+    width: 400px;
+    @media only screen and (max-width: 600px) {
+        width: unset;
+    }
 `;
 
 export const EmailLabel = styled.label`
@@ -59,7 +64,6 @@ export const EmailLabel = styled.label`
 
 export const EmailInput = styled.input`
     border: 1px solid ${({ theme }) => theme.colors.lightGray1};
-    width: 100%;
     height: 48px;
     border-radius: 4px;
     padding-left: 10px;
@@ -68,13 +72,17 @@ export const EmailInput = styled.input`
 
 export const ValidationError = styled.small`
     color: ${({ theme }) => theme.colors.red};
-    padding-top: 10px;
+    padding: 10px 0px 0 0;
     font-size: 14px;
 `;
 
 export const PasswordContainer = styled.div`
     display: flex;
     flex-direction: column;
+    width: 400px;
+    @media only screen and (max-width: 600px) {
+        width: unset;
+    }
 `;
 
 export const PasswordLabel = styled.label`
@@ -87,11 +95,13 @@ export const PasswordLabel = styled.label`
 
 export const PasswordInput = styled.input`
     border: 1px solid ${({ theme }) => theme.colors.lightGray1};
-    width: 100%;
     height: 48px;
     border-radius: 4px;
     padding-left: 10px;
     font-size: 20px;
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+    }
 `;
 
 export const LoginButton = styled.button`

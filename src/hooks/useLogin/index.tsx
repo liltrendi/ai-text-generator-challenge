@@ -1,10 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
-import {
-    IValidationErrors,
-    TTextChangeEvent,
-    TTextChangeHandler,
-} from "@/hooks/useLogin/types";
-import { isEmailValid } from "@/utils";
+import { TTextChangeEvent, TTextChangeHandler } from "@/hooks/useLogin/types";
+import { validateLoginDetails } from "@/utils";
 
 export const useLogin = () => {
     const [email, setEmail] = useState<string>("");
@@ -31,19 +27,8 @@ export const useLogin = () => {
     );
 
     const validationErrors = useMemo(() => {
-        const errors: IValidationErrors = { email: [], password: [] };
-
-        if (!showValidationErrors) return errors;
-
-        if (!isEmailValid(email)) {
-            errors.email.push("Email is not valid");
-        }
-
-        if (password.length < 6) {
-            errors.password.push("Password is too short");
-        }
-
-        return errors;
+        if (!showValidationErrors) return { email: [], password: [] };
+        return validateLoginDetails(email, password);
     }, [email, password, showValidationErrors]);
 
     const handleLogin = useCallback(async () => {
@@ -53,6 +38,7 @@ export const useLogin = () => {
         if (abortLogin) return;
 
         console.log({ email, password });
+        // eslint-ignore
     }, [email, password, validationErrors]);
 
     return {
