@@ -1,8 +1,12 @@
 import { useCallback, useMemo, useState } from "react";
-import { TTextChangeEvent, TTextChangeHandler } from "@/hooks/useLogin/types";
+import {
+    IUseLoginResponse,
+    TTextChangeEvent,
+    TTextChangeHandler,
+} from "@/hooks/useLogin/types";
 import { validateLoginDetails } from "@/utils";
 
-export const useLogin = () => {
+export const useLogin = (): IUseLoginResponse => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [showValidationErrors, setShowValidationErrors] =

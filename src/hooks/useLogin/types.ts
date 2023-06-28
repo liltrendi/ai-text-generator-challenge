@@ -10,3 +10,11 @@ export interface IValidationErrors {
     email: string[];
     password: string[];
 }
+
+export interface IUseLoginResponse {
+    email: string;
+    password: string;
+    handleTextChange: TTextChangeHandler;
+    validationErrors: IValidationErrors;
+    handleLogin: () => Promise<void>;
+}
