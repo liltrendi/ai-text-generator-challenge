@@ -27,7 +27,7 @@ import { useLogin } from "@/hooks/useLogin";
 const poppins = Poppins({ weight: ["400", "600", "700"], subsets: ["latin"] });
 
 const Login: FC<ILoginProps> = () => {
-    const { email, password, handleTextChange, validationErrors, handleLogin } =
+    const { email, password, handleTextChange, validationErrors, handleLogin, loading } =
         useLogin();
 
     return (
@@ -79,7 +79,7 @@ const Login: FC<ILoginProps> = () => {
                         </ValidationError>
                     )}
                 </PasswordContainer>
-                <LoginButton onClick={handleLogin} data-testid="login-btn">
+                <LoginButton onClick={handleLogin} data-testid="login-btn" disabled={loading}>
                     Log In
                 </LoginButton>
             </LoginContainer>

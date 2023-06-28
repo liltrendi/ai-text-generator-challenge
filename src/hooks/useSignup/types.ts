@@ -21,4 +21,5 @@ export interface IUseSignupResponse {
     handleTextChange: TTextChangeHandler;
     validationErrors: ISignupValidationErrors;
     handleSignup: () => Promise<void>;
+    loading: boolean;
 }

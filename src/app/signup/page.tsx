@@ -30,7 +30,7 @@ import { useSignup } from "@/hooks/useSignup";
 const poppins = Poppins({ weight: ["400", "600", "700"], subsets: ["latin"] });
 
 const Signup: FC<ISignupProps> = () => {
-    const { name, email, password, confirmPassword, handleTextChange, validationErrors, handleSignup } =
+    const { name, email, password, confirmPassword, handleTextChange, validationErrors, handleSignup, loading } =
         useSignup();
 
     return (
@@ -118,7 +118,7 @@ const Signup: FC<ISignupProps> = () => {
                         </ValidationError>
                     )}
                 </PasswordContainer>
-                <SignupButton onClick={handleSignup} data-testid="signup-btn">
+                <SignupButton onClick={handleSignup} data-testid="signup-btn" disabled={loading}>
                     Sign Up
                 </SignupButton>
             </SignupContainer>
