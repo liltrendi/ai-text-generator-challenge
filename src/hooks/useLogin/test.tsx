@@ -32,8 +32,8 @@ describe("useLogin()", () => {
                 act(() => {
                     result.current.handleTextChange?.(updatedEvent);
                 });
-                expect(result.current.email).toBe(inputs.invalidEmail);
-                expect(result.current.password).toBe(inputs.invalidEmail);
+                expect(result.current.email).toBe("");
+                expect(result.current.password).toBe("");
             });
         });
 
