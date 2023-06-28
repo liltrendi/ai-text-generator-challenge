@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from 'next/link'
 import { styled } from "styled-components";
 
 export const PageContainer = styled.div`
@@ -104,6 +105,14 @@ export const PasswordInput = styled.input`
     }
 `;
 
+export const ButtonsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 34px;
+`
+
 export const LoginButton = styled.button`
     background-color: ${({ theme }) => theme.colors.green};
     color: ${({ theme }) => theme.colors.lightWhite2};
@@ -112,7 +121,11 @@ export const LoginButton = styled.button`
     border: none;
     padding: 8px 32px;
     border-radius: 8px;
-    margin-top: 34px;
     height: 48px;
     cursor: ${({disabled}) => disabled ? "not-allowed" : "pointer"};
 `;
+
+export const SignupLink = styled(Link)`
+    color: ${({ theme }) => theme.colors.darkGray};
+    font-size: 17px;
+`

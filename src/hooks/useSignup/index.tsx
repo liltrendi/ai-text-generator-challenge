@@ -52,8 +52,6 @@ export const useSignup = (): IUseSignupResponse => {
         }
 
         setLoading(true);
-
-        console.log("initiate signup", {email, password, name})
         // eslint-ignore
     }, [name, email, password, confirmPassword, validationErrors, loading]);
 

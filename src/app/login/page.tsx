@@ -19,6 +19,8 @@ import {
     PasswordInput,
     LoginButton,
     ValidationError,
+    SignupLink,
+    ButtonsContainer,
 } from "@/app/login/styles";
 import { ILoginProps } from "@/app/login/types";
 import AppLogo from "@/public/static/images/app-logo.svg";
@@ -79,9 +81,14 @@ const Login: FC<ILoginProps> = () => {
                         </ValidationError>
                     )}
                 </PasswordContainer>
+                <ButtonsContainer>
                 <LoginButton onClick={handleLogin} data-testid="login-btn" disabled={loading}>
                     Log In
                 </LoginButton>
+                <SignupLink href={"/signup"}>
+                    Sign up instead?
+                </SignupLink>
+                </ButtonsContainer>
             </LoginContainer>
         </PageContainer>
     );

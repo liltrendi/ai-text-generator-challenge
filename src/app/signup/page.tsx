@@ -22,6 +22,8 @@ import {
     NameLabel,
     NameContainer,
     NameInput,
+    ButtonsContainer,
+    LoginLink,
 } from "@/app/signup/styles";
 import { ISignupProps } from "@/app/signup/types";
 import AppLogo from "@/public/static/images/app-logo.svg";
@@ -118,9 +120,14 @@ const Signup: FC<ISignupProps> = () => {
                         </ValidationError>
                     )}
                 </PasswordContainer>
+                <ButtonsContainer>
                 <SignupButton onClick={handleSignup} data-testid="signup-btn" disabled={loading}>
                     Sign Up
                 </SignupButton>
+                <LoginLink href="/login">
+                    Log in instead?
+                </LoginLink>
+                </ButtonsContainer>
             </SignupContainer>
         </PageContainer>
     );

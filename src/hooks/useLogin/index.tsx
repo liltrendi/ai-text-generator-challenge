@@ -42,10 +42,8 @@ export const useLogin = (): IUseLoginResponse => {
             setShowValidationErrors(true)
             return;
         }
-        
-        setLoading(true)
 
-        console.log("initiate login", {email, password})
+        setLoading(true)
         // eslint-ignore
     }, [email, password, validationErrors, loading]);
 
