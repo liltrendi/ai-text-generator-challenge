@@ -9,7 +9,11 @@
         "lint": "next lint",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build",
-        "test": "jest --watch"
+        "test": "jest",
+        "test:watch": "jest --config ./jest.config.js --watch",
+        "test:updatesnapshots": "jest --config ./jest.config.js --u",
+        "test:coverage": "jest --config ./jest.config.js --coverage",
+        "test:ci": "jest --config ./jest.config.js --collectCoverage --coverageDirectory=\"./coverage-reports\" --ci --reporters=default  --watchAll=false"
     },
     "dependencies": {
         "@types/node": "20.3.2",
