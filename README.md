@@ -8,7 +8,7 @@
   </p>
 
 <h4>
-    <a href="https://ai-text-generator-challenge.vercel.app/">View Demo</a>
+    <a href="https://ai-text-generator-challenge.netlify.app">View Demo</a>
   <span> · </span>
     <a href="https://github.com/liltrendi/ai-text-generator-challenge/issues/">Report Bug</a>
   <span> · </span>
@@ -47,7 +47,7 @@ This is a submission for [this event](https://community.distributed.com/networks
 
 ### :triangular_flag_on_post: Live Demo
 
-This web app is hosted on Vercel. You can try it out here: [OpenAI Text Generator Challenge](https://ai-text-generator-challenge.vercel.app/)
+This web app is hosted on [Netlify](https://netlify.com) (crucial choice as I needed to use their identity service for authentication). You can try it out here: [OpenAI Text Generator Challenge](https://ai-text-generator-challenge.netlify.app)
 
 <!-- Screenshots -->
 
