@@ -67,6 +67,8 @@ This web app is hosted on Vercel. You can try it out here: [OpenAI Text Generato
     <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
     <li><a href="https://nextjs.org/">Next.js</a></li>
     <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://styled-components.com/">Styled components</a></li>
+    <li><a href="https://storybook.js.org/">Storybook</a></li>
   </ul>
 </details>
 
@@ -107,7 +109,7 @@ To run this project, create a `.env` file first, then copy the contents of the `
 
 ### :bangbang: Prerequisites
 
-This project uses [npm](npmjs.com) as package manager. You will also need [Git](https://git-scm.com) installed.
+This project uses [npm](npmjs.com) as package manager (version 17.19.1 of [Node.js](https://nodejs.org) was used). You will also need [Git](https://git-scm.com) installed.
 
 <!-- Installation -->
 
