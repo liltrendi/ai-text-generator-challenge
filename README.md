@@ -139,10 +139,28 @@ Open up a terminal, clone (download) the project from [Github](https://github.co
 
 ### :test_tube: Running Tests
 
-To run tests, run the following command
+To run one-off tests, run the following command
 
 ```bash
   npm test
+```
+
+Run the following to have the reload on code changes:
+
+```bash
+  npm run test:watch
+```
+
+Update snapshots using:
+
+```bash
+  npm run test:updatesnapshots
+```
+
+Generate coverage reports with:
+
+```bash
+  npm run test:coverage
 ```
 
 <!-- Run Locally -->
