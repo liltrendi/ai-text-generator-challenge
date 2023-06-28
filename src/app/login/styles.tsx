@@ -5,9 +5,12 @@ import { styled } from "styled-components";
 export const PageContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 100px;
+    @media only screen and (max-width: 600px) {
+        padding: 80px 0;
+    }
 `;
 
 export const LoginContainer = styled.div`
@@ -33,17 +36,27 @@ export const Title = styled.h1`
     color: ${({ theme }) => theme.colors.pink};
     font-weight: 600;
     font-size: 18px;
+    @media only screen and (max-width: 600px) {
+        font-size: 17px;
+    }
 `;
 
 export const Description = styled.p`
     font-weight: 600;
     font-size: 19px;
+    @media only screen and (max-width: 600px) {
+        font-size: 17px;
+    }
 `;
 
 export const LoginText = styled.p`
     color: ${({ theme }) => theme.colors.darkGray};
     font-weight: 700;
     padding: 40px 0 10px 0;
+    @media only screen and (max-width: 600px) {
+        padding-top: 30px;
+        font-size: 17px;
+    }
 `;
 
 export const EmailContainer = styled.div`
@@ -61,6 +74,9 @@ export const EmailLabel = styled.label`
     font-size: 16px;
     line-height: 28px;
     padding: 20px 0 15px 0;
+    @media only screen and (max-width: 600px) {
+        padding: 10px 0 8px 0;
+    };
 `;
 
 export const EmailInput = styled.input`
@@ -69,6 +85,9 @@ export const EmailInput = styled.input`
     border-radius: 4px;
     padding-left: 10px;
     font-size: 20px;
+    @media only screen and (max-width: 600px) {
+        height: 40px;
+    };
 `;
 
 export const ValidationError = styled.small`
@@ -92,6 +111,9 @@ export const PasswordLabel = styled.label`
     font-size: 16px;
     line-height: 28px;
     padding: 20px 0 15px 0;
+    @media only screen and (max-width: 600px) {
+        padding: 10px 0 8px 0;
+    };
 `;
 
 export const PasswordInput = styled.input`
@@ -102,6 +124,7 @@ export const PasswordInput = styled.input`
     font-size: 20px;
     @media only screen and (max-width: 600px) {
         width: 100%;
+        height: 40px;
     }
 `;
 
@@ -111,6 +134,9 @@ export const ButtonsContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-top: 34px;
+    @media only screen and (max-width: 600px) {
+        margin-top: 35px;
+    };
 `
 
 export const LoginButton = styled.button`
@@ -123,9 +149,15 @@ export const LoginButton = styled.button`
     border-radius: 8px;
     height: 48px;
     cursor: ${({disabled}) => disabled ? "not-allowed" : "pointer"};
+    @media only screen and (max-width: 600px) {
+        padding: 0 15px;
+    };
 `;
 
 export const SignupLink = styled(Link)`
     color: ${({ theme }) => theme.colors.darkGray};
     font-size: 17px;
+    @media only screen and (max-width: 600px) {
+    font-size: 15px;
+    }
 `
