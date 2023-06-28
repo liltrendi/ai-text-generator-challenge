@@ -34,10 +34,16 @@ const Login: FC<ILoginProps> = () => {
         <PageContainer className={poppins.className}>
             <LoginContainer>
                 <Header>
-                    <Logo src={AppLogo} alt="Distributed logo" />
+                    <Logo
+                        src={AppLogo}
+                        alt="Distributed logo"
+                        data-testid="login-logo"
+                    />
                     <TextContainer>
-                        <Title>Elastic Team</Title>
-                        <Description>Open AI - Text Generator</Description>
+                        <Title data-testid="login-title">Elastic Team</Title>
+                        <Description data-testid="login-subtitle">
+                            Open AI - Text Generator
+                        </Description>
                     </TextContainer>
                 </Header>
                 <LoginText>Please log in to continue</LoginText>
@@ -49,9 +55,10 @@ const Login: FC<ILoginProps> = () => {
                         type="email"
                         value={email}
                         onChange={handleTextChange}
+                        data-testid="login-email-input"
                     />
                     {validationErrors.email.length > 0 && (
-                        <ValidationError>
+                        <ValidationError data-testid="email-validation-error">
                             {validationErrors.email[0]}
                         </ValidationError>
                     )}
@@ -64,14 +71,17 @@ const Login: FC<ILoginProps> = () => {
                         type="password"
                         value={password}
                         onChange={handleTextChange}
+                        data-testid="login-password-input"
                     />
                     {validationErrors.password.length > 0 && (
-                        <ValidationError>
+                        <ValidationError data-testid="password-validation-error">
                             {validationErrors.password[0]}
                         </ValidationError>
                     )}
                 </PasswordContainer>
-                <LoginButton onClick={handleLogin}>Log In</LoginButton>
+                <LoginButton onClick={handleLogin} data-testid="login-btn">
+                    Log In
+                </LoginButton>
             </LoginContainer>
         </PageContainer>
     );
