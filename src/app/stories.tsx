@@ -1,13 +1,13 @@
 import React from "react";
 import { StoryFn } from "@storybook/react";
-import AppEntry from "@/app/page";
+import HomeComponent from "@/app/page";
 
 export default {
-    title: "App",
-    component: AppEntry,
+    title: "Home",
+    component: HomeComponent,
 };
 
-const Template: StoryFn<typeof AppEntry> = () => <AppEntry />;
+const Template: StoryFn<typeof HomeComponent> = () => <HomeComponent />;
 
-export const App = Template.bind({});
-App.args = {};
+export const Home = Template.bind({});
+Home.args = {};
