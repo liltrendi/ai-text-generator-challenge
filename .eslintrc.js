@@ -11,6 +11,7 @@ module.exports = {
         browser: true,
         node: true,
         es6: true,
+        jest: true,
     },
     settings: {
         react: {
@@ -18,7 +19,7 @@ module.exports = {
         },
         "import/resolver": {
             node: {
-                extensions: [".ts", ".tsx"],
+                extensions: [".ts", ".tsx", ".js", ".jsx"],
             },
         },
     },
@@ -61,5 +62,6 @@ module.exports = {
         "@typescript-eslint/no-empty-interface": "warn",
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": "warn",
+        // "import/no-unresolved": "off",
     },
 };

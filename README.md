@@ -55,7 +55,7 @@ This web app is hosted on [Netlify](https://netlify.com) (crucial choice as I ne
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="src/assets/images/demo-chat-ui.svg" alt="screenshot" width="400" height="500" />
+  <img src="public/static/images/demo-chat-ui.svg" alt="screenshot" width="400" height="500" />
 </div>
 
 <!-- TechStack -->
@@ -107,6 +107,7 @@ This web app is hosted on [Netlify](https://netlify.com) (crucial choice as I ne
 | Pink          | ![#ff007a](https://via.placeholder.com/10/ff007a?text=+) #ff007a |
 | Green         | ![#46b455](https://via.placeholder.com/10/46b455?text=+) #46b455 |
 | Black         | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000 |
+| Red           | ![#FF0000](https://via.placeholder.com/10/FF0000?text=+) #FF0000 |
 
 <!-- Env Variables -->
 
@@ -138,10 +139,28 @@ Open up a terminal, clone (download) the project from [Github](https://github.co
 
 ### :test_tube: Running Tests
 
-To run tests, run the following command
+To run one-off tests, run the following command
 
 ```bash
   npm test
+```
+
+Run the following to have the reload on code changes:
+
+```bash
+  npm run test:watch
+```
+
+Update snapshots using:
+
+```bash
+  npm run test:updatesnapshots
+```
+
+Generate coverage reports with:
+
+```bash
+  npm run test:coverage
 ```
 
 <!-- Run Locally -->
