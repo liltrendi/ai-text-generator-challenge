@@ -65,26 +65,21 @@ This web app is hosted on [Netlify](https://netlify.com) (crucial choice as I ne
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
-    <li><a href="https://nextjs.org/">Next.js</a></li>
     <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
     <li><a href="https://styled-components.com/">Styled components</a></li>
     <li><a href="https://storybook.js.org/">Storybook</a></li>
+    <li><a href="https://nextjs.org/">Next.js</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://www.typescriptlang.org/">Typescript</a></li>
-    <li><a href="https://nodejs.org/">Node.js</a></li>
-  </ul>
-</details>
-
-<details>
-<summary>Database</summary>
-  <ul>
-    <li><a href="https://airtable.com/">Airtable</a></li>
+    <li><a href="https://netlify.com">Netlify</a> - deployment</li>
+    <li><a href="https://docs.netlify.com/visitor-access/identity/">Identity</a> - authentication</li>
+    <li><a href="https://www.netlify.com/products/functions/">Cloud Functions</a> - server-side api endpoints</li>
+    <li><a href="https://airtable.com/">Airtable</a> - messages persistence</li>
   </ul>
 </details>
 
