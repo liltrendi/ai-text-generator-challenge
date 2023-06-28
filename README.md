@@ -27,6 +27,7 @@
     -   [Screenshots](#camera-screenshots)
     -   [Tech Stack](#space_invader-tech-stack)
     -   [Features](#dart-features)
+    -   [Color Reference](#art-color-reference)
     -   [Environment Variables](#key-environment-variables)
 -   [Getting Started](#toolbox-getting-started)
     -   [Prerequisites](#bangbang-prerequisites)
@@ -94,6 +95,23 @@ This web app is hosted on [Netlify](https://netlify.com) (crucial choice as I ne
 -   Login
 -   Signup
 -   Chat
+
+<!-- Color Reference -->
+
+### :art: Color Reference
+
+| Color         | Hex                                                              |
+| ------------- | ---------------------------------------------------------------- |
+| White         | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) #ffffff |
+| Light White 1 | ![#f1f1f1](https://via.placeholder.com/10/f1f1f1?text=+) #f1f1f1 |
+| Light White 2 | ![#e0e0e0](https://via.placeholder.com/10/e0e0e0?text=+) #e0e0e0 |
+| Light Gray 1  | ![#a4a9bf](https://via.placeholder.com/10/a4a9bf?text=+) #a4a9bf |
+| Light Gray 2  | ![#9f9f9f](https://via.placeholder.com/10/9f9f9f?text=+) #9f9f9f |
+| Mid Gray      | ![#656c8c](https://via.placeholder.com/10/656c8c?text=+) #656c8c |
+| Dark Gray     | ![#2d3142](https://via.placeholder.com/10/2d3142?text=+) #2d3142 |
+| Pink          | ![#ff007a](https://via.placeholder.com/10/ff007a?text=+) #ff007a |
+| Green         | ![#46b455](https://via.placeholder.com/10/46b455?text=+) #46b455 |
+| Black         | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000 |
 
 <!-- Env Variables -->
 
