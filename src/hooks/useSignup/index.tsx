@@ -5,6 +5,7 @@ import {
     TTextChangeHandler,
 } from "@/hooks/useSignup/types";
 import { shouldAbortSignup, validateSignupDetails } from "@/utils";
+import { userLogin, userSignup } from "@/services/auth";
 
 export const useSignup = (): IUseSignupResponse => {
     const [name, setName] = useState<string>("")
@@ -52,7 +53,15 @@ export const useSignup = (): IUseSignupResponse => {
         }
 
         setLoading(true);
-        // eslint-ignore
+        const response = await userSignup({name, email, password})
+
+        if(response){
+            await userLogin({email, password});
+        }
+
+        setLoading(false);
+
+        // redirect to home
     }, [name, email, password, confirmPassword, validationErrors, loading]);
 
     return {
