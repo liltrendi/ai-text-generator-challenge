@@ -7,13 +7,11 @@ module.exports = {
             jsx: true,
         },
     },
-
     env: {
         browser: true,
         node: true,
         es6: true,
     },
-
     settings: {
         react: {
             version: "detect",
@@ -24,7 +22,6 @@ module.exports = {
             },
         },
     },
-
     plugins: ["@typescript-eslint"],
     extends: [
         "next/core-web-vitals",
@@ -33,6 +30,7 @@ module.exports = {
         "prettier",
         "plugin:prettier/recommended",
         "plugin:react-hooks/recommended",
+        "plugin:storybook/recommended",
     ],
     rules: {
         "@typescript-eslint/no-unused-vars": "error",
@@ -57,5 +55,7 @@ module.exports = {
         ],
         "no-nested-ternary": "off",
         "import/prefer-default-export": "off",
+        "import/no-extraneous-dependencies": "off",
+        "react/function-component-definition": "off",
     },
 };
