@@ -18,13 +18,18 @@ import {
     PasswordLabel,
     PasswordInput,
     LoginButton,
+    ValidationError,
 } from "@/app/login/styles";
 import { ILoginProps } from "@/app/login/types";
 import AppLogo from "@/public/static/images/app-logo.svg";
+import { useLogin } from "@/hooks/useLogin";
 
 const poppins = Poppins({ weight: ["400", "600", "700"], subsets: ["latin"] });
 
 const Login: FC<ILoginProps> = () => {
+    const { email, password, handleTextChange, validationErrors, handleLogin } =
+        useLogin();
+
     return (
         <PageContainer className={poppins.className}>
             <LoginContainer>
@@ -38,7 +43,18 @@ const Login: FC<ILoginProps> = () => {
                 <LoginText>Please log in to continue</LoginText>
                 <EmailContainer>
                     <EmailLabel htmlFor="email">Email address</EmailLabel>
-                    <EmailInput id="email" name="email" type="email" />
+                    <EmailInput
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={email}
+                        onChange={handleTextChange}
+                    />
+                    {validationErrors.email.length > 0 && (
+                        <ValidationError>
+                            {validationErrors.email[0]}
+                        </ValidationError>
+                    )}
                 </EmailContainer>
                 <PasswordContainer>
                     <PasswordLabel htmlFor="password">Password</PasswordLabel>
@@ -46,9 +62,16 @@ const Login: FC<ILoginProps> = () => {
                         id="password"
                         name="password"
                         type="password"
+                        value={password}
+                        onChange={handleTextChange}
                     />
+                    {validationErrors.password.length > 0 && (
+                        <ValidationError>
+                            {validationErrors.password[0]}
+                        </ValidationError>
+                    )}
                 </PasswordContainer>
-                <LoginButton>Log In</LoginButton>
+                <LoginButton onClick={handleLogin}>Log In</LoginButton>
             </LoginContainer>
         </PageContainer>
     );

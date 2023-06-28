@@ -107,6 +107,7 @@ This web app is hosted on [Netlify](https://netlify.com) (crucial choice as I ne
 | Pink          | ![#ff007a](https://via.placeholder.com/10/ff007a?text=+) #ff007a |
 | Green         | ![#46b455](https://via.placeholder.com/10/46b455?text=+) #46b455 |
 | Black         | ![#000000](https://via.placeholder.com/10/000000?text=+) #000000 |
+| Red           | ![#FF0000](https://via.placeholder.com/10/FF0000?text=+) #FF0000 |
 
 <!-- Env Variables -->
 

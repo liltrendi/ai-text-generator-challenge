@@ -66,6 +66,12 @@ export const EmailInput = styled.input`
     font-size: 20px;
 `;
 
+export const ValidationError = styled.small`
+    color: ${({ theme }) => theme.colors.red};
+    padding-top: 10px;
+    font-size: 14px;
+`;
+
 export const PasswordContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -96,7 +102,7 @@ export const LoginButton = styled.button`
     border: none;
     padding: 8px 32px;
     border-radius: 8px;
-    margin-top: 45px;
+    margin-top: 34px;
     height: 48px;
     cursor: pointer;
 `;
