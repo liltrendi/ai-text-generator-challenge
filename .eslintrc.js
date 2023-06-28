@@ -58,5 +58,8 @@ module.exports = {
         "import/no-extraneous-dependencies": "off",
         "react/function-component-definition": "off",
         "prettier/prettier": ["warn", { printWidth: 80 }],
+        "@typescript-eslint/no-empty-interface": "warn",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "warn",
     },
 };

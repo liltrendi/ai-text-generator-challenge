@@ -23,6 +23,7 @@ const config: StorybookConfig = {
         config.resolve.alias = {
             ...config.resolve.alias,
             "@/app": path.resolve(__dirname, "../src/app"),
+            "@/theme": path.resolve(__dirname, "../src/theme"),
         };
 
         return config;

@@ -1,7 +1,9 @@
-export default function Home() {
-  return (
-    <main>
-      Hey
-    </main>
-  )
-}
+"use client";
+
+import { AppContainer } from "@/app/styles";
+
+const Home = () => {
+    return <AppContainer>Hello</AppContainer>;
+};
+
+export default Home;
