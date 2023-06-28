@@ -57,5 +57,6 @@ module.exports = {
         "import/prefer-default-export": "off",
         "import/no-extraneous-dependencies": "off",
         "react/function-component-definition": "off",
+        "prettier/prettier": ["warn", { printWidth: 80 }],
     },
 };
