@@ -70,7 +70,7 @@ describe("useLogin()", () => {
         });
 
         describe("given that an invalid email is used", () => {
-            it("should populate the validation errors array", () => {
+            it("should populate the email validation errors array", () => {
                 const { result } = renderHook(() => useLogin());
                 const updatedEvent = JSON.parse(
                     JSON.stringify(new Event("change"))
