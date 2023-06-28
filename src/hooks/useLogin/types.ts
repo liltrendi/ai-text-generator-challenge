@@ -6,7 +6,7 @@ export type TTextChangeHandler =
 
 export type TTextChangeEvent = ChangeEvent<HTMLInputElement>;
 
-export interface IValidationErrors {
+export interface ILoginValidationErrors {
     email: string[];
     password: string[];
 }
@@ -15,6 +15,6 @@ export interface IUseLoginResponse {
     email: string;
     password: string;
     handleTextChange: TTextChangeHandler;
-    validationErrors: IValidationErrors;
+    validationErrors: ILoginValidationErrors;
     handleLogin: () => Promise<void>;
 }
