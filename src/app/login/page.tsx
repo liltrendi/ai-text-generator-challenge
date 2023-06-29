@@ -94,4 +94,4 @@ const Login: FC<ILoginProps> = () => {
     );
 };
 
-export default Login;
+export default Login

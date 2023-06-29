@@ -6,4 +6,4 @@ const Home = () => {
     return <AppContainer>Hello</AppContainer>;
 };
 
-export default Home;
+export default Home

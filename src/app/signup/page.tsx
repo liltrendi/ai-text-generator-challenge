@@ -133,4 +133,4 @@ const Signup: FC<ISignupProps> = () => {
     );
 };
 
-export default Signup;
+export default Signup

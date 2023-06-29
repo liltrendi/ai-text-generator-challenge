@@ -10,7 +10,7 @@ const auth = new GoTrue({
 
 export const userLogin = async ({email, password}: IUserLoginParams) => {
     try {
-        const response = await auth.login(email, password)
+        const response = await auth.login(email, password, true)
         triggerAlert({
             message: "Login successful",
             type: "success"
@@ -28,7 +28,6 @@ export const userLogin = async ({email, password}: IUserLoginParams) => {
 export const userSignup = async ({email, password, name}: IUserSignupParams) => {
     try {
         const response = await auth.signup(email, password, {name})
-        console.log("Signup successful", response);
         triggerAlert({
             message: "Signup successful",
             type: "success"
@@ -40,5 +39,13 @@ export const userSignup = async ({email, password, name}: IUserSignupParams) => 
             type: "error"
         })
         return null
+    }
+}
+
+export const getCurrentUser = () => {
+    try {
+        return auth.currentUser()
+    } catch(e){
+        return null;
     }
 }

@@ -13,6 +13,24 @@ const inputs = {
     strongPassword: "23JumpStreet",
 };
 
+jest.mock("next/router", () => ({
+    useRouter() {
+        return {
+            route: "/",
+            pathname: "",
+            query: "",
+            asPath: "",
+        };
+    },
+}));
+
+jest.mock('../../hooks/useAuth', () => ({
+    useAuth: jest.fn(() => ({
+        user: null,
+        loading: true
+    }))
+}))
+
 describe("<LoginPage />", () => {
     beforeEach(() => {
         render(
