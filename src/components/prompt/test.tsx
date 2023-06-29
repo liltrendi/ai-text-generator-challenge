@@ -1,14 +1,14 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import ChatPrompt from "@/components/chat-prompt";
+import Prompt from "@/components/prompt";
 import { ThemeProvider } from "styled-components";
 import { theme } from "@/theme";
 
-describe("<ChatPrompt />", () => {
+describe("<Prompt />", () => {
     describe("given that the component is mounted", () => {
         render(
             <ThemeProvider theme={theme}>
-                <ChatPrompt />
+                <Prompt />
             </ThemeProvider>
         );
     });

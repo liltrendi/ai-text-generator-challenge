@@ -1,13 +1,13 @@
 import { FC } from "react";
-import { IChatPrompt } from "@/components/chat-prompt/types";
+import { IPromptProps } from "@/components/prompt/types";
 import {
     ChatInput,
     ChatSend,
     InputContainer,
-} from "@/components/chat-prompt/styles";
+} from "@/components/prompt/styles";
 import SendIcon from "@/public/static/images/send-icon.svg";
 
-const ChatPrompt: FC<IChatPrompt> = () => {
+const Prompt: FC<IPromptProps> = () => {
     return (
         <InputContainer>
             <ChatInput
@@ -20,4 +20,4 @@ const ChatPrompt: FC<IChatPrompt> = () => {
     );
 };
 
-export default ChatPrompt;
+export default Prompt;
