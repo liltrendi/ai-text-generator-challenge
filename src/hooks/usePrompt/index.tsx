@@ -1,28 +1,23 @@
-import { useCallback, useState } from "react";
-import { TTextChangeEvent, TTextChangeHandler } from "@/hooks/usePrompt/types";
+import { usePromptState } from "@/hooks/usePrompt/usePromptState";
+import { usePromptHandlers } from "@/hooks/usePrompt/usePromptHandlers";
+import { usePromptEvents } from "@/hooks/usePrompt/usePromptEvents";
 
 export const usePrompt = () => {
-    const [prompt, setPrompt] = useState<string>("");
-    const [sendingPrompt, setSendingPrompt] = useState<boolean>(false);
-
-    const handleTextChange: TTextChangeHandler = useCallback(
-        (e: TTextChangeEvent) => {
-            setPrompt(e.target.value || "");
-        },
-        [prompt]
-    );
-
-    const sendPrompt = useCallback(async () => {
-        if (sendingPrompt) return;
-
-        setSendingPrompt(true);
-        // process input
-        setSendingPrompt(false);
-    }, [prompt, sendingPrompt]);
+    const { promptText, setPromptText, clearPromptText } = usePromptState();
+    const {
+        handleTextChange,
+        handlePromptSubmitOnEnter,
+        handlePromptSubmitOnClick,
+    } = usePromptHandlers({
+        promptText,
+        setPromptText,
+        clearPromptText,
+    });
+    usePromptEvents(handlePromptSubmitOnEnter);
 
     return {
-        prompt,
+        promptText,
         handleTextChange,
-        sendPrompt,
+        handlePromptSubmitOnClick,
     };
 };

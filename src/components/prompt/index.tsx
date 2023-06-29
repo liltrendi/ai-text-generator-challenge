@@ -9,7 +9,8 @@ import SendIcon from "@/public/static/images/send-icon.svg";
 import { usePrompt } from "@/hooks/usePrompt";
 
 const Prompt: FC<IPromptProps> = () => {
-    const { prompt, handleTextChange, sendPrompt } = usePrompt();
+    const { promptText, handleTextChange, handlePromptSubmitOnClick } =
+        usePrompt();
 
     return (
         <InputContainer>
@@ -18,9 +19,13 @@ const Prompt: FC<IPromptProps> = () => {
                 placeholder="Type your prompt here..."
                 data-testid="chat-prompt-input"
                 onChange={handleTextChange}
-                value={prompt}
+                value={promptText}
             />
-            <ChatSend src={SendIcon} alt="Send message" onClick={sendPrompt} />
+            <ChatSend
+                src={SendIcon}
+                alt="Send message"
+                onClick={handlePromptSubmitOnClick}
+            />
         </InputContainer>
     );
 };

@@ -9,6 +9,7 @@ import { useAuth } from "@/hooks/useAuth";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "@/components/header";
 import { usePathname } from "next/navigation";
+import Prompt from "../prompt";
 
 const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
     const pathname = usePathname();
@@ -23,6 +24,7 @@ const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
             <ToastContainer />
             {pathname === "/" && <Header user={user} />}
             {children}
+            {pathname === "/" && <Prompt />}
         </ThemeProvider>
     );
 };

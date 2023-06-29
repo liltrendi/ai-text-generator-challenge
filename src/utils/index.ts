@@ -128,3 +128,14 @@ export const getUserInitials = (user: User | null | undefined) => {
 
     return userInitials;
 };
+
+export const isValidPromptText = (promptText: string | undefined) => {
+    if (promptText && promptText.length > 2) {
+        return true;
+    }
+    triggerAlert({
+        message: "Please write a message that is at least 3 characters long",
+        type: "error",
+    });
+    return false;
+};
