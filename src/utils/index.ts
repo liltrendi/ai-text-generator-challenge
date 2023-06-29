@@ -104,8 +104,18 @@ export const triggerAlert = ({
     theme = "dark",
     closeOnClick = true,
     pauseOnHover = true,
+    pauseOnFocusLoss = false,
+    autoClose = 1500,
 }: IAlertProps) => {
-    toast(message, { position, type, theme, closeOnClick, pauseOnHover });
+    toast(message, {
+        position,
+        type,
+        theme,
+        closeOnClick,
+        pauseOnHover,
+        pauseOnFocusLoss,
+        autoClose,
+    });
 };
 
 export const getUserInitials = (user: User | null | undefined) => {
@@ -134,7 +144,7 @@ export const isValidPromptText = (promptText: string | undefined) => {
         return true;
     }
     triggerAlert({
-        message: "Please write a message that is at least 3 characters long",
+        message: "Your message is too short",
         type: "error",
     });
     return false;
