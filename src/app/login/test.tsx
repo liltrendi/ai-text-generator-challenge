@@ -13,7 +13,7 @@ const inputs = {
     strongPassword: "23JumpStreet",
 };
 
-jest.mock("next/router", () => ({
+jest.mock("next/navigation", () => ({
     useRouter() {
         return {
             route: "/",

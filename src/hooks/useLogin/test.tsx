@@ -9,7 +9,7 @@ const inputs = {
     strongPassword: "23JumpStreet",
 };
 
-jest.mock("next/router", () => ({
+jest.mock("next/navigation", () => ({
     useRouter() {
         return {
             route: "/",
@@ -18,7 +18,14 @@ jest.mock("next/router", () => ({
             asPath: "",
         };
     },
-}));
+}))
+
+jest.mock('../useAuth', () => ({
+    useAuth: jest.fn(() => ({
+        user: null,
+        loading: true
+    }))
+}))
 
 describe("useLogin()", () => {
     describe("given that the hook is called", () => {

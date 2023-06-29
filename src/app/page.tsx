@@ -3,7 +3,7 @@
 import { AppContainer } from "@/app/styles";
 
 const Home = () => {
-    return <AppContainer>Hello</AppContainer>;
+    return <AppContainer>Hey</AppContainer>;
 };
 
-export default Home
+export default Home;

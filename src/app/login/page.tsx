@@ -29,8 +29,14 @@ import { useLogin } from "@/hooks/useLogin";
 const poppins = Poppins({ weight: ["400", "600", "700"], subsets: ["latin"] });
 
 const Login: FC<ILoginProps> = () => {
-    const { email, password, handleTextChange, validationErrors, handleLogin, loading } =
-        useLogin();
+    const {
+        email,
+        password,
+        handleTextChange,
+        validationErrors,
+        handleLogin,
+        loading,
+    } = useLogin();
 
     return (
         <PageContainer className={poppins.className}>
@@ -82,16 +88,18 @@ const Login: FC<ILoginProps> = () => {
                     )}
                 </PasswordContainer>
                 <ButtonsContainer>
-                <LoginButton onClick={handleLogin} data-testid="login-btn" disabled={loading}>
-                    Log In
-                </LoginButton>
-                <SignupLink href={"/signup"}>
-                    Sign up instead?
-                </SignupLink>
+                    <LoginButton
+                        onClick={handleLogin}
+                        data-testid="login-btn"
+                        disabled={loading}
+                    >
+                        Log In
+                    </LoginButton>
+                    <SignupLink href="/signup">Sign up instead?</SignupLink>
                 </ButtonsContainer>
             </LoginContainer>
         </PageContainer>
     );
 };
 
-export default Login
+export default Login;
