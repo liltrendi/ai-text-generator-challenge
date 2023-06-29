@@ -44,7 +44,7 @@
 
 This is a submission for [this event](https://community.distributed.com/networks/events/117733) by Distributed, whose challenge is to build an operational AI-powered conversational interface that interacts with OpenAI to give responses based on user input.
 
-For reference, the challenge details are on this page: [Distributed Challenge](public/static/resources/challenge.html)
+For reference, the challenge details are on this page: [Distributed Challenge](https://649cd07e63b6a10f6bd568d0--gentle-cat-7fd94b.netlify.app/challenge)
 
 <!-- Live Demo -->
 
