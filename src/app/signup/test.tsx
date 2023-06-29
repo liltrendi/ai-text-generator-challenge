@@ -16,6 +16,24 @@ const inputs = {
     invalidConfirmPassword: "dehrfrfrandom"
 };
 
+jest.mock("next/router", () => ({
+    useRouter() {
+        return {
+            route: "/",
+            pathname: "",
+            query: "",
+            asPath: "",
+        };
+    },
+}));
+
+jest.mock('../../hooks/useAuth', () => ({
+    useAuth: jest.fn(() => ({
+        user: null,
+        loading: true
+    }))
+}))
+
 describe("<SignupPage />", () => {
     beforeEach(() => {
         render(

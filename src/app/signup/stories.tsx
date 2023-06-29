@@ -5,6 +5,11 @@ import SignupPage from "@/app/signup/page";
 export default {
     title: "Signup",
     component: SignupPage,
+    parameters: {
+        nextjs: {
+            appDirectory: true,
+        },      
+    }
 };
 
 const Template: StoryFn<typeof SignupPage> = () => <SignupPage />;

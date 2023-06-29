@@ -4,13 +4,15 @@ import {
     TTextChangeEvent,
     TTextChangeHandler,
 } from "@/hooks/useLogin/types";
-import { validateLoginDetails } from "@/utils";
+import { shouldAbortLogin, validateLoginDetails } from "@/utils";
+import { userLogin } from "@/services/auth";
 
 export const useLogin = (): IUseLoginResponse => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [showValidationErrors, setShowValidationErrors] =
         useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false)
 
     const handleTextChange: TTextChangeHandler = useCallback(
         (e: TTextChangeEvent) => {
@@ -36,14 +38,18 @@ export const useLogin = (): IUseLoginResponse => {
     }, [email, password, showValidationErrors]);
 
     const handleLogin = useCallback(async () => {
-        const abortLogin: boolean =
-            validationErrors.email.length > 0 ||
-            validationErrors.password.length > 0;
-        if (abortLogin) return;
+        const abortLogin: boolean = shouldAbortLogin(email, password, loading);
+        if (abortLogin){
+            setShowValidationErrors(true)
+            return;
+        }
 
-        console.log({ email, password });
-        // eslint-ignore
-    }, [email, password, validationErrors]);
+        setLoading(true);
+        await userLogin({email, password})
+        setLoading(false);
+
+        // redirect to home
+    }, [email, password, validationErrors, loading]);
 
     return {
         email,
@@ -51,5 +57,6 @@ export const useLogin = (): IUseLoginResponse => {
         handleTextChange,
         validationErrors,
         handleLogin,
+        loading
     };
 };

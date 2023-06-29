@@ -17,4 +17,5 @@ export interface IUseLoginResponse {
     handleTextChange: TTextChangeHandler;
     validationErrors: ILoginValidationErrors;
     handleLogin: () => Promise<void>;
+    loading: boolean;
 }

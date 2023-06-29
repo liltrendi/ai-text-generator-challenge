@@ -11,6 +11,17 @@ const inputs = {
     strongPassword: "23JumpStreet",
 };
 
+jest.mock("next/router", () => ({
+    useRouter() {
+        return {
+            route: "/",
+            pathname: "",
+            query: "",
+            asPath: "",
+        };
+    },
+}));
+
 describe("useSignup()", () => {
     describe("given that the hook is called", () => {
         it("should initially have the email and password as empty", () => {

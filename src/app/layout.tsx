@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import AppLayout from "@/components/layout";
 import "./globals.css";
+import { useAuth } from "@/hooks/useAuth";
 
 const inter = Inter({ subsets: ["latin"] });
 

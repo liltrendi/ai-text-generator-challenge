@@ -5,6 +5,11 @@ import HomeComponent from "@/app/page";
 export default {
     title: "Home",
     component: HomeComponent,
+    parameters: {
+        nextjs: {
+            appDirectory: true,
+        },      
+    }
 };
 
 const Template: StoryFn<typeof HomeComponent> = () => <HomeComponent />;

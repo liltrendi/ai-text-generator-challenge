@@ -19,6 +19,8 @@ import {
     PasswordInput,
     LoginButton,
     ValidationError,
+    SignupLink,
+    ButtonsContainer,
 } from "@/app/login/styles";
 import { ILoginProps } from "@/app/login/types";
 import AppLogo from "@/public/static/images/app-logo.svg";
@@ -27,7 +29,7 @@ import { useLogin } from "@/hooks/useLogin";
 const poppins = Poppins({ weight: ["400", "600", "700"], subsets: ["latin"] });
 
 const Login: FC<ILoginProps> = () => {
-    const { email, password, handleTextChange, validationErrors, handleLogin } =
+    const { email, password, handleTextChange, validationErrors, handleLogin, loading } =
         useLogin();
 
     return (
@@ -79,12 +81,17 @@ const Login: FC<ILoginProps> = () => {
                         </ValidationError>
                     )}
                 </PasswordContainer>
-                <LoginButton onClick={handleLogin} data-testid="login-btn">
+                <ButtonsContainer>
+                <LoginButton onClick={handleLogin} data-testid="login-btn" disabled={loading}>
                     Log In
                 </LoginButton>
+                <SignupLink href={"/signup"}>
+                    Sign up instead?
+                </SignupLink>
+                </ButtonsContainer>
             </LoginContainer>
         </PageContainer>
     );
 };
 
-export default Login;
+export default Login

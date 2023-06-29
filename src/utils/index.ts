@@ -1,6 +1,7 @@
+import { toast } from 'react-toastify';
 import { ISignupValidationErrors } from "@/hooks/useSignup/types";
 import { ILoginValidationErrors } from "@/hooks/useLogin/types";
-import { ISignupParams } from "@/utils/types";
+import { IAlertProps, ISignupParams } from "@/utils/types";
 
 export const isEmailValid = (email: string) =>
     !!email
@@ -53,9 +54,23 @@ export const validateSignupDetails = ({name, email, password, confirmPassword}: 
         );
     }
 
-    if(password.toLowerCase() !== confirmPassword.toLowerCase()){
+    if(password !== confirmPassword){
         errors.confirmPassword.push("Passwords do not match")
     }
 
     return errors;
 };
+
+export const shouldAbortLogin = (email: string, password: string, loading: boolean) => {
+    const errors = validateLoginDetails(email, password);
+    return loading || Object.values(errors).some(item => item.length !== 0);
+}
+
+export const shouldAbortSignup = (name: string, email: string, password: string, confirmPassword: string, loading: boolean) => {
+    const errors = validateSignupDetails({name, email, password, confirmPassword})
+    return loading || Object.values(errors).some(item => item.length !== 0);
+}
+
+export const triggerAlert = ({message, position = "top-right",type = "default",theme = "dark",closeOnClick = true,pauseOnHover = true}: IAlertProps) => {
+    toast(message, {position, type, theme, closeOnClick, pauseOnHover})
+}

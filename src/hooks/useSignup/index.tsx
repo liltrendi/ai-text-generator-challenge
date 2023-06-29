@@ -4,7 +4,8 @@ import {
     TTextChangeEvent,
     TTextChangeHandler,
 } from "@/hooks/useSignup/types";
-import { validateSignupDetails } from "@/utils";
+import { shouldAbortSignup, validateSignupDetails } from "@/utils";
+import { userLogin, userSignup } from "@/services/auth";
 
 export const useSignup = (): IUseSignupResponse => {
     const [name, setName] = useState<string>("")
@@ -13,6 +14,7 @@ export const useSignup = (): IUseSignupResponse => {
     const [confirmPassword, setConfirmPassword] = useState<string>("");
     const [showValidationErrors, setShowValidationErrors] =
         useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false)
 
     const handleTextChange: TTextChangeHandler = useCallback(
         (e: TTextChangeEvent) => {
@@ -44,13 +46,23 @@ export const useSignup = (): IUseSignupResponse => {
     }, [name, email, password, confirmPassword, showValidationErrors]);
 
     const handleSignup = useCallback(async () => {
-        const abortLogin: boolean = validationErrors.name.length > 0 || validationErrors.email.length > 0 ||
-            validationErrors.password.length > 0 || validationErrors.confirmPassword.length > 0;
-        if (abortLogin) return;
+        const abortLogin: boolean = shouldAbortSignup(name, email, password, confirmPassword, loading)
+        if (abortLogin){
+            setShowValidationErrors(true)
+            return;
+        }
 
-        console.log({ email, password });
-        // eslint-ignore
-    }, [name, email, password, confirmPassword, validationErrors]);
+        setLoading(true);
+        const response = await userSignup({name, email, password})
+
+        if(response){
+            await userLogin({email, password});
+        }
+
+        setLoading(false);
+
+        // redirect to home
+    }, [name, email, password, confirmPassword, validationErrors, loading]);
 
     return {
         name,
@@ -60,5 +72,6 @@ export const useSignup = (): IUseSignupResponse => {
         handleTextChange,
         validationErrors,
         handleSignup,
+        loading
     };
 };
