@@ -14,11 +14,9 @@ import {
 } from "@/components/header/styles";
 import { IHeaderProps } from "@/components/header/types";
 import { useMenu } from "@/hooks/useMenu";
-import { useAuth } from "@/hooks/useAuth";
 import { getUserInitials } from "@/utils";
 
-const Header: FC<IHeaderProps> = () => {
-    const { user } = useAuth();
+const Header: FC<IHeaderProps> = ({ user }) => {
     const { visible, toggle, handleLogout } = useMenu();
 
     if (!user) return undefined;

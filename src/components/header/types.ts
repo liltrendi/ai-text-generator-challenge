@@ -1,6 +1,9 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { User } from "gotrue-js";
 
-export interface IHeaderProps {}
+export interface IHeaderProps {
+    user: User | null | undefined;
+}
 
 export interface IUserMenuProps {
     isVisible?: boolean;

@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation";
 
 const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
     const pathname = usePathname();
-    const { loading } = useAuth();
+    const { loading, user } = useAuth();
 
     if (loading) {
         return <div>Loading...</div>;
@@ -21,7 +21,7 @@ const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
     return (
         <ThemeProvider theme={theme}>
             <ToastContainer />
-            {pathname === "/" && <Header />}
+            {pathname === "/" && <Header user={user} />}
             {children}
         </ThemeProvider>
     );

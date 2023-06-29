@@ -34,16 +34,16 @@ jest.mock("../../hooks/useAuth", () => ({
 }));
 
 describe("<Header />", () => {
-    beforeEach(() => {
-        render(
-            <ThemeProvider theme={theme}>
-                <Header />
-            </ThemeProvider>
-        );
-    });
-
     describe("given that the header component is rendered", () => {
         describe("and the user is not logged in", () => {
+            beforeEach(() => {
+                render(
+                    <ThemeProvider theme={theme}>
+                        <Header user={null} />
+                    </ThemeProvider>
+                );
+            });
+
             it("should not render any header element, for example, the logo or avatar", () => {
                 expect(
                     screen.queryByTestId("header-logo")
@@ -55,6 +55,20 @@ describe("<Header />", () => {
         });
 
         describe("and the user is logged in", () => {
+            beforeEach(() => {
+                render(
+                    <ThemeProvider theme={theme}>
+                        <Header
+                            user={
+                                {
+                                    user_metadata: { name: "Charles Xavier" },
+                                } as User
+                            }
+                        />
+                    </ThemeProvider>
+                );
+            });
+
             it("should render the logo of the page", () => {
                 expect(screen.queryByTestId("header-logo")).toBeInTheDocument();
             });
