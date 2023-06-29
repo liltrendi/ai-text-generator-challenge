@@ -9,7 +9,9 @@ export enum EBrandColors {
     pink = "#FF007A",
     green = "#46B455",
     black = "#000000",
+    black1 = "#00000033",
     red = "#FF0000",
+    transparent = "#00000033",
 }
 
 export enum EBrandFonts {
