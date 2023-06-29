@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="src/assets/images/app-logo.svg" alt="logo" width="100" height="auto" />
+  <img src="public/static/images/app-logo.svg" alt="logo" width="100" height="auto" />
   <h1>OpenAI Text Generator Challenge</h1>
   
   <p>
@@ -43,6 +43,8 @@
 ## :star2: About the Project
 
 This is a submission for [this event](https://community.distributed.com/networks/events/117733) by Distributed, whose challenge is to build an operational AI-powered conversational interface that interacts with OpenAI to give responses based on user input.
+
+For reference, the challenge details are on this page: [Distributed Challenge](https://649cd07e63b6a10f6bd568d0--gentle-cat-7fd94b.netlify.app/challenge)
 
 <!-- Live Demo -->
 
