@@ -7,6 +7,9 @@ export const InputContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
+    @media only screen and (max-width: 600px) {
+        padding: 0 15px 15px 15px;
+    }
 `;
 
 export const ChatInput = styled.input`
@@ -19,11 +22,18 @@ export const ChatInput = styled.input`
     &::placeholder {
         color: ${({ theme }) => theme.colors.lightGray2};
     }
+    @media only screen and (max-width: 600px) {
+        padding-left: 13px;
+    }
 `;
 
 export const ChatSend = styled(Image)`
     position: absolute;
     cursor: pointer;
-    top: 14px;
+    top: 15px;
     right: 48px;
+    @media only screen and (max-width: 600px) {
+        top: 15px;
+        right: 31px;
+    }
 `;
