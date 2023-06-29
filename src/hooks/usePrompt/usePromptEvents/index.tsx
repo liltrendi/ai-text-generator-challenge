@@ -1,4 +1,3 @@
-import { triggerAlert } from "@/utils";
 import { useCallback, useEffect } from "react";
 
 export const usePromptEvents = (
@@ -15,17 +14,7 @@ export const usePromptEvents = (
             const promptText = (e.target as HTMLInputElement)?.value;
 
             // input is not focused
-            if (promptText === undefined) {
-                return;
-            }
-
-            // input is focused but empty
-            if (promptText === "") {
-                triggerAlert({
-                    message:
-                        "Please write a message that is at least 3 characters long",
-                    type: "error",
-                });
+            if (typeof promptText !== "string") {
                 return;
             }
 
