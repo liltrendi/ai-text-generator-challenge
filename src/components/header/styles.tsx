@@ -61,15 +61,23 @@ export const SubtitleMobile = styled.p`
 export const UserMenu = styled.div``;
 
 export const UserMenuIcon = styled.span`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: ${({ theme }) => theme.colors.pink};
     color: ${({ theme }) => theme.colors.white};
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     border-radius: 50%;
-    padding: 13px;
+    max-width: 45px;
+    max-height: 45px;
+    padding: 15px;
+    font-size: 17.5px;
     @media only screen and (max-width: 600px) {
-        padding: 8px;
-        font-size: 16px;
+        padding: 19px;
+        font-size: 15px;
+        max-width: 30px;
+        max-height: 30px;
     }
 `;
 
@@ -81,7 +89,7 @@ export const UserMenuContent = styled((props: TUserMenuProps) => {
     boxShadow: `0px 8px 16px 0px ${theme.colors.black1}`,
     display: isVisible ? "block" : "none",
     background: theme.colors.white,
-    transform: "translate(-40px, 35px)",
+    transform: "translate(-50px, 25px)",
     borderRadius: "5px",
     position: "absolute",
     textAlign: "center",
@@ -90,7 +98,7 @@ export const UserMenuContent = styled((props: TUserMenuProps) => {
     cursor: "pointer",
     zIndex: 1,
     "@media only screen and (max-width: 600px)": {
-        transform: "translate(-40px, 25px)",
+        transform: "translate(-40px, 20px)",
         padding: "12px 0 10px 0",
         minWidth: "80px",
         fontSize: "16px",
