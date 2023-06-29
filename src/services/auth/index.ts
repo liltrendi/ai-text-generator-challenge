@@ -12,7 +12,7 @@ export const userLogin = async ({email, password}: IUserLoginParams) => {
     try {
         const response = await auth.login(email, password, true)
         triggerAlert({
-            message: "Login successful",
+            message: "You are now logged in",
             type: "success"
         })
         return response;
@@ -29,7 +29,7 @@ export const userSignup = async ({email, password, name}: IUserSignupParams) => 
     try {
         const response = await auth.signup(email, password, {name})
         triggerAlert({
-            message: "Signup successful",
+            message: "Your account has been created",
             type: "success"
         })
         return response;
@@ -48,4 +48,10 @@ export const getCurrentUser = () => {
     } catch(e){
         return null;
     }
+}
+
+export const userLogout = async () => {
+    const user = getCurrentUser();
+    if(!user) return;
+    await user.logout();
 }

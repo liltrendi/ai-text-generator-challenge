@@ -6,8 +6,10 @@ import {
 } from "@/hooks/useSignup/types";
 import { shouldAbortSignup, validateSignupDetails } from "@/utils";
 import { userLogin, userSignup } from "@/services/auth";
+import { useRouter } from "next/navigation";
 
 export const useSignup = (): IUseSignupResponse => {
+    const router = useRouter()
     const [name, setName] = useState<string>("")
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -57,11 +59,10 @@ export const useSignup = (): IUseSignupResponse => {
 
         if(response){
             await userLogin({email, password});
+            router.push("/")
         }
 
         setLoading(false);
-
-        // redirect to home
     }, [name, email, password, confirmPassword, validationErrors, loading]);
 
     return {

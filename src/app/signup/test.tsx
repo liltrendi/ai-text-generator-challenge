@@ -16,7 +16,7 @@ const inputs = {
     invalidConfirmPassword: "dehrfrfrandom"
 };
 
-jest.mock("next/router", () => ({
+jest.mock("next/navigation", () => ({
     useRouter() {
         return {
             route: "/",

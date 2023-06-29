@@ -9,9 +9,18 @@ export const useAuth = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [user, setUser] = useState<null | undefined | User>(undefined);
 
+    console.log({user})
+
     useEffect(() => {
         const currentUser = getCurrentUser();
-        router.push(currentUser ? "/" : "/login")
+        const route = window.location.pathname;
+        if(currentUser){
+            router.push("/")
+        }else{
+            if(route === "/"){
+                router.push("/login")
+            }
+        }
         setUser(currentUser);
         setLoading(false);
     }, [])
