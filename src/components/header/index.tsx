@@ -14,9 +14,14 @@ import {
 } from "@/components/header/styles";
 import { IHeaderProps } from "@/components/header/types";
 import { useMenu } from "@/hooks/useMenu";
+import { useAuth } from "@/hooks/useAuth";
+import { getUserInitials } from "@/utils";
 
 const Header: FC<IHeaderProps> = () => {
+    const { user } = useAuth();
     const { visible, toggle, handleLogout } = useMenu();
+
+    if (!user) return undefined;
 
     return (
         <HeaderContainer>
@@ -38,7 +43,7 @@ const Header: FC<IHeaderProps> = () => {
             </NavContainer>
             <UserMenu>
                 <UserMenuIcon onClick={toggle} data-testid="header-avatar">
-                    BN
+                    {getUserInitials(user)}
                 </UserMenuIcon>
                 <UserMenuContent
                     data-testid="header-signout-btn"

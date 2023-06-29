@@ -1,4 +1,5 @@
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import { User } from "gotrue-js";
 import { ISignupValidationErrors } from "@/hooks/useSignup/types";
 import { ILoginValidationErrors } from "@/hooks/useLogin/types";
 import { IAlertProps, ISignupParams } from "@/utils/types";
@@ -33,11 +34,21 @@ export const validateLoginDetails = (email: string, password: string) => {
     return errors;
 };
 
-export const validateSignupDetails = ({name, email, password, confirmPassword}: ISignupParams) => {
-    const errors: ISignupValidationErrors = { name: [], email: [], password: [], confirmPassword: [] };
+export const validateSignupDetails = ({
+    name,
+    email,
+    password,
+    confirmPassword,
+}: ISignupParams) => {
+    const errors: ISignupValidationErrors = {
+        name: [],
+        email: [],
+        password: [],
+        confirmPassword: [],
+    };
 
-    if(name.length < 3){
-        errors.name.push("Name is too short")
+    if (name.length < 3) {
+        errors.name.push("Name is too short");
     }
 
     if (!isEmailValid(email)) {
@@ -54,23 +65,66 @@ export const validateSignupDetails = ({name, email, password, confirmPassword}: 
         );
     }
 
-    if(password !== confirmPassword){
-        errors.confirmPassword.push("Passwords do not match")
+    if (password !== confirmPassword) {
+        errors.confirmPassword.push("Passwords do not match");
     }
 
     return errors;
 };
 
-export const shouldAbortLogin = (email: string, password: string, loading: boolean) => {
+export const shouldAbortLogin = (
+    email: string,
+    password: string,
+    loading: boolean
+) => {
     const errors = validateLoginDetails(email, password);
     return loading || Object.values(errors).some(item => item.length !== 0);
-}
+};
 
-export const shouldAbortSignup = (name: string, email: string, password: string, confirmPassword: string, loading: boolean) => {
-    const errors = validateSignupDetails({name, email, password, confirmPassword})
+export const shouldAbortSignup = (
+    name: string,
+    email: string,
+    password: string,
+    confirmPassword: string,
+    loading: boolean
+) => {
+    const errors = validateSignupDetails({
+        name,
+        email,
+        password,
+        confirmPassword,
+    });
     return loading || Object.values(errors).some(item => item.length !== 0);
-}
+};
 
-export const triggerAlert = ({message, position = "top-right",type = "default",theme = "dark",closeOnClick = true,pauseOnHover = true}: IAlertProps) => {
-    toast(message, {position, type, theme, closeOnClick, pauseOnHover})
-}
+export const triggerAlert = ({
+    message,
+    position = "top-right",
+    type = "default",
+    theme = "dark",
+    closeOnClick = true,
+    pauseOnHover = true,
+}: IAlertProps) => {
+    toast(message, { position, type, theme, closeOnClick, pauseOnHover });
+};
+
+export const getUserInitials = (user: User | null | undefined) => {
+    const defaultInitals = "😃";
+
+    if (!user) return defaultInitals;
+
+    const fullName: string = user.user_metadata?.name || "";
+    const namesList = fullName.split(" ");
+
+    // if the user's full name is less than one character
+    if (fullName.length < 1 || namesList.length < 1) return defaultInitals;
+
+    // get two of the user's initials, otherwise one initial works
+    const userInitials = namesList.slice(0, 2).reduce((initials, name) => {
+        // eslint-disable-next-line
+        initials += name[0]?.toUpperCase() || name[0];
+        return initials;
+    }, "");
+
+    return userInitials;
+};
