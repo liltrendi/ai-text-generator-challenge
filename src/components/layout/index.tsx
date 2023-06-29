@@ -7,17 +7,21 @@ import { IAppLayoutProps } from "@/components/layout/types";
 import { theme } from "@/theme";
 import { useAuth } from "@/hooks/useAuth";
 import "react-toastify/dist/ReactToastify.css";
+import Header from "@/components/header";
+import { usePathname } from "next/navigation";
 
 const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
-    const {loading} = useAuth();
+    const pathname = usePathname();
+    const { loading } = useAuth();
 
-    if(loading){
-        return <div>Loading...</div>
+    if (loading) {
+        return <div>Loading...</div>;
     }
 
     return (
         <ThemeProvider theme={theme}>
             <ToastContainer />
+            {pathname === "/" && <Header />}
             {children}
         </ThemeProvider>
     );

@@ -1,6 +1,5 @@
 "use client";
 
-import { FC } from "react";
 import { Poppins } from "next/font/google";
 import {
     PageContainer,
@@ -25,6 +24,7 @@ import {
 import { ILoginProps } from "@/app/login/types";
 import AppLogo from "@/public/static/images/app-logo.svg";
 import { useLogin } from "@/hooks/useLogin";
+import { FC } from "react";
 
 const poppins = Poppins({ weight: ["400", "600", "700"], subsets: ["latin"] });
 
