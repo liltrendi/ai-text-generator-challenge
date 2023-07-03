@@ -5,8 +5,8 @@ const inputs = {
     invalidEmail: "hello world",
     validEmail: "hey@hey.com",
     shortPassword: "dh",
-    weakPassword: "heythere",
-    strongPassword: "23JumpStreet",
+    weakPassword: "",
+    strongPassword: "12",
 };
 
 jest.mock("next/navigation", () => ({
@@ -18,14 +18,14 @@ jest.mock("next/navigation", () => ({
             asPath: "",
         };
     },
-}))
+}));
 
-jest.mock('../useAuth', () => ({
+jest.mock("../useAuth", () => ({
     useAuth: jest.fn(() => ({
         user: null,
-        loading: true
-    }))
-}))
+        loading: true,
+    })),
+}));
 
 describe("useLogin()", () => {
     describe("given that the hook is called", () => {
@@ -106,7 +106,7 @@ describe("useLogin()", () => {
             });
         });
 
-        describe("given that a weak password is used", () => {
+        describe("given that a short password is used", () => {
             it("should populate the password validation errors array", () => {
                 const { result } = renderHook(() => useLogin());
                 const updatedEvent = JSON.parse(
@@ -161,7 +161,7 @@ describe("useLogin()", () => {
             });
         });
 
-        describe("given that a valid password is used", () => {
+        describe("given that a longer password is used", () => {
             it("should clear the password validation array", () => {
                 const { result } = renderHook(() => useLogin());
                 const updatedEvent = JSON.parse(

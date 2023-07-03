@@ -21,14 +21,8 @@ export const validateLoginDetails = (email: string, password: string) => {
         errors.email.push("Email is not valid");
     }
 
-    if (password.length < 6) {
-        errors.password.push("Password is too short");
-    }
-
-    if (!isPasswordValid(password)) {
-        errors.password.push(
-            "Password must have one numeric digit, one uppercase letter and one lowercase letter"
-        );
+    if (password.length < 1) {
+        errors.password.push("Password cannot be empty");
     }
 
     return errors;

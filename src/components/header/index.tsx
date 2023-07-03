@@ -15,11 +15,17 @@ import {
 import { IHeaderProps } from "@/components/header/types";
 import { useMenu } from "@/hooks/useMenu";
 import { getUserInitials } from "@/utils";
+import { useAuth } from "@/hooks/useAuth";
+import { usePathname } from "next/navigation";
 
-const Header: FC<IHeaderProps> = ({ user }) => {
+const Header: FC<IHeaderProps> = ({ user: propsUser }) => {
+    const { user: authUser } = useAuth();
+    const pathname = usePathname();
     const { visible, toggle, handleLogout } = useMenu();
 
-    if (!user) return undefined;
+    const user = authUser || propsUser;
+
+    if (!user || pathname !== "/") return undefined;
 
     return (
         <HeaderContainer>

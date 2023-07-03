@@ -18,6 +18,9 @@ jest.mock("next/navigation", () => ({
             push: mockRouterPush,
         };
     },
+    usePathname() {
+        return "/";
+    },
 }));
 
 jest.mock("../../hooks/useAuth", () => ({

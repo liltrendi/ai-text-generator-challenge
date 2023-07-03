@@ -8,6 +8,7 @@ import { theme } from "@/theme";
 const inputs = {
     invalidEmail: "hello world",
     validEmail: "hey@hey.com",
+    emptyPassword: "",
     shortPassword: "dh",
     weakPassword: "heythere",
     strongPassword: "23JumpStreet",
@@ -24,12 +25,12 @@ jest.mock("next/navigation", () => ({
     },
 }));
 
-jest.mock('../../hooks/useAuth', () => ({
+jest.mock("../../hooks/useAuth", () => ({
     useAuth: jest.fn(() => ({
         user: null,
-        loading: true
-    }))
-}))
+        loading: true,
+    })),
+}));
 
 describe("<LoginPage />", () => {
     beforeEach(() => {
@@ -134,16 +135,21 @@ describe("<LoginPage />", () => {
                 expect(passwordInput).toHaveDisplayValue(inputs.shortPassword);
             });
 
-            describe("given that the password text is short", () => {
+            describe("given that the password text is empty", () => {
                 beforeEach(async () => {
                     const passwordInput = screen.getByTestId(
                         "login-password-input"
                     );
+                    // type something into the input
                     await act(async () => {
                         await userEvent.type(
                             passwordInput,
-                            inputs.shortPassword
+                            inputs.strongPassword
                         );
+                    });
+                    // delete the entire input to mimic an empty input
+                    await act(async () => {
+                        await userEvent.clear(passwordInput);
                     });
                 });
 
@@ -153,31 +159,7 @@ describe("<LoginPage />", () => {
                     );
                     expect(passwordValidationSpan).toBeInTheDocument();
                     expect(passwordValidationSpan?.textContent).toBe(
-                        "Password is too short"
-                    );
-                });
-            });
-
-            describe("given that the password text is weak", () => {
-                beforeEach(async () => {
-                    const passwordInput = screen.getByTestId(
-                        "login-password-input"
-                    );
-                    await act(async () => {
-                        await userEvent.type(
-                            passwordInput,
-                            inputs.weakPassword
-                        );
-                    });
-                });
-
-                it("should show an 'invalid' password validation error", () => {
-                    const passwordValidationSpan = screen.queryByTestId(
-                        "password-validation-error"
-                    );
-                    expect(passwordValidationSpan).toBeInTheDocument();
-                    expect(passwordValidationSpan?.textContent).toBe(
-                        "Password must have one numeric digit, one uppercase letter and one lowercase letter"
+                        "Password cannot be empty"
                     );
                 });
             });
