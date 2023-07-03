@@ -3,12 +3,12 @@ import { styled } from "styled-components";
 
 export const InputContainer = styled.div`
     position: absolute;
-    padding: 0 30px 20px 30px;
+    padding: 20px 30px 20px 30px;
     left: 0;
     right: 0;
     bottom: 0;
     @media only screen and (max-width: 600px) {
-        padding: 0 15px 15px 15px;
+        padding: 15px 15px 15px 15px;
     }
 `;
 
@@ -30,10 +30,10 @@ export const ChatInput = styled.input`
 export const ChatSend = styled(Image)`
     position: absolute;
     cursor: pointer;
-    top: 15px;
-    right: 48px;
+    top: 34px;
+    right: 45px;
     @media only screen and (max-width: 600px) {
-        top: 15px;
-        right: 31px;
+        top: 30px;
+        right: 27px;
     }
 `;
