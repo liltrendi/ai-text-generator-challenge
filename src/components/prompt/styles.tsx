@@ -33,7 +33,7 @@ export const ChatSend = styled(Image)`
     top: 34px;
     right: 45px;
     @media only screen and (max-width: 600px) {
-        top: 30px;
-        right: 27px;
+        top: 28px;
+        right: 28px;
     }
 `;
