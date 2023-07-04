@@ -34,20 +34,20 @@ describe("useMenu()", () => {
             const {
                 result: { current },
             } = renderHook(() => useMenu());
-            expect(current.visible).toBe(false);
+            expect(current.menuVisible).toBe(false);
         });
 
         it("should toggle visibility when the toggle setter is invoked", () => {
             const hook = renderHook(() => useMenu());
-            expect(hook.result.current.visible).toBe(false);
+            expect(hook.result.current.menuVisible).toBe(false);
             act(() => {
-                hook.result.current.toggle();
+                hook.result.current.toggleMenu();
             });
-            expect(hook.result.current.visible).toBe(true);
+            expect(hook.result.current.menuVisible).toBe(true);
             act(() => {
-                hook.result.current.toggle();
+                hook.result.current.toggleMenu();
             });
-            expect(hook.result.current.visible).toBe(false);
+            expect(hook.result.current.menuVisible).toBe(false);
         });
 
         it("should navigate to the login page when handleLogout is invoked", async () => {

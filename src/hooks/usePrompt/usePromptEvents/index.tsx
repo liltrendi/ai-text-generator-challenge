@@ -5,7 +5,12 @@ export const usePromptEvents = (
 ) => {
     const submitOnEnter = useCallback(
         async (e: KeyboardEvent) => {
-            if (!(e.code === "Enter" || e.code === "NumpadEnter")) {
+            if (
+                !(
+                    (e.code === "Enter" || e.code === "NumpadEnter") &&
+                    (e.target as HTMLInputElement)?.name === "prompt"
+                )
+            ) {
                 return;
             }
 

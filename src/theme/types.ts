@@ -10,6 +10,7 @@ export enum EBrandColors {
     green = "#46B455",
     black = "#000000",
     black1 = "#00000033",
+    black2 = "#00000066",
     red = "#FF0000",
     transparent = "#00000033",
 }

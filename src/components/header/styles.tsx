@@ -84,23 +84,31 @@ export const UserMenuIcon = styled.span`
 export const UserMenuContent = styled((props: TUserMenuProps) => {
     // eslint-disable-next-line
     const { isVisible, ...otherProps } = props;
-    return <div {...otherProps} />;
+    return <ul {...otherProps} />;
 })(({ theme, isVisible }) => ({
-    boxShadow: `0px 8px 16px 0px ${theme.colors.black1}`,
+    boxShadow: `0px 8px 16px 1px ${theme.colors.black1}`,
     display: isVisible ? "block" : "none",
     background: theme.colors.white,
     transform: "translate(-50px, 25px)",
     borderRadius: "5px",
     position: "absolute",
     textAlign: "center",
-    padding: "12px 0",
     minWidth: "100px",
     cursor: "pointer",
     zIndex: 1,
     "@media only screen and (max-width: 600px)": {
-        transform: "translate(-40px, 20px)",
-        padding: "12px 0 10px 0",
+        transform: "translate(-45px, 20px)",
         minWidth: "80px",
         fontSize: "16px",
     },
 }));
+
+export const MenuItem = styled.li`
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.pink};
+        color: ${({ theme }) => theme.colors.white};
+    }
+`;
