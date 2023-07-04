@@ -2,7 +2,7 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export interface IChatWindowProps {}
 
-export type TChatOrigin = "user" | "bot";
+export type TChatOrigin = "user" | "assistant";
 
 export interface IAppMessage {
     id: string;

@@ -12,14 +12,14 @@ export const APP_CONVERSATIONS: IAppConversation[] = [
         id: "234",
         dateCreated: new Date().toISOString(),
         message: "Hello Brian",
-        origin: "bot",
+        origin: "assistant",
         dateModified: null,
     },
     {
         id: "4",
         dateCreated: new Date().toISOString(),
         message: "How can I help you?",
-        origin: "bot",
+        origin: "assistant",
         dateModified: null,
     },
     {

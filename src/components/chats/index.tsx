@@ -36,7 +36,7 @@ const Chats: FC<IChatWindowProps> = () => {
                                     chatOrigin={item.origin}
                                     isAvatarHidden={hideAvatar}
                                 >
-                                    {item.origin === "bot"
+                                    {item.origin === "assistant"
                                         ? "AI"
                                         : getUserInitials(user)}
                                 </ChatAvatar>

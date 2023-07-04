@@ -42,7 +42,7 @@ export const ChatBubble = styled((props: TChatBubbleProps) => {
     return <div {...otherProps} />;
 })(({ chatOrigin }) => ({
     display: "flex",
-    justifyContent: chatOrigin === "bot" ? "flex-start" : "flex-end",
+    justifyContent: chatOrigin === "assistant" ? "flex-start" : "flex-end",
 }));
 
 export const ChatWrapper = styled((props: TChatWrapper) => {
@@ -52,7 +52,7 @@ export const ChatWrapper = styled((props: TChatWrapper) => {
 })(({ chatOrigin }) => ({
     display: "flex",
     alignItems: "start",
-    flexDirection: chatOrigin === "bot" ? "row" : "row-reverse",
+    flexDirection: chatOrigin === "assistant" ? "row" : "row-reverse",
     maxWidth: "75%",
     margin: "7px 0",
     "@media only screen and (max-width: 600px)": {
@@ -88,12 +88,12 @@ export const ChatText = styled((props: TChatTextProps) => {
     return <p {...otherProps} />;
 })(({ chatOrigin, theme }) => ({
     background: theme.colors.lightWhite1,
-    margin: chatOrigin === "bot" ? "0 0 0 15px" : "0 15px 0 0",
+    margin: chatOrigin === "assistant" ? "0 0 0 15px" : "0 15px 0 0",
     borderRadius: "12px",
     padding: "12px 16px",
     fontSize: "19px",
     "@media only screen and (max-width: 600px)": {
-        margin: chatOrigin === "bot" ? "0 0 0 8px" : "0 8px 0 0",
+        margin: chatOrigin === "assistant" ? "0 0 0 8px" : "0 8px 0 0",
         fontSize: "16px",
     },
 }));
