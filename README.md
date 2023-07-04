@@ -72,7 +72,6 @@ This web app is hosted on [Netlify](https://netlify.com) (crucial choice as I ne
     <li><a href="https://styled-components.com/">Styled components</a> - styles organization</li>
     <li><a href="https://storybook.js.org/">Storybook</a> - component library</li>
     <li><a href="https://nextjs.org/">Next.js</a> - static site generator</li>
-    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">Local storage</a> - message persistence</li>
   </ul>
 </details>
 
@@ -82,6 +81,7 @@ This web app is hosted on [Netlify](https://netlify.com) (crucial choice as I ne
     <li><a href="https://netlify.com">Netlify</a> - deployment</li>
     <li><a href="https://docs.netlify.com/visitor-access/identity/">Identity</a> - authentication</li>
     <li><a href="https://www.netlify.com/products/functions/">Cloud Functions</a> - lambda endpoints</li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API">IndexedDB</a> - local message persistence</li>
   </ul>
 </details>
 

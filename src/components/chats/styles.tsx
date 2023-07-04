@@ -91,7 +91,7 @@ export const ChatText = styled((props: TChatTextProps) => {
     background: theme.colors.lightWhite1,
     margin: chatOrigin === "bot" ? "0 0 0 15px" : "0 15px 0 0",
     borderRadius: "12px",
-    padding: "8px 16px",
+    padding: "12px 16px",
     fontSize: "19px",
     "@media only screen and (max-width: 600px)": {
         margin: chatOrigin === "bot" ? "0 0 0 8px" : "0 8px 0 0",

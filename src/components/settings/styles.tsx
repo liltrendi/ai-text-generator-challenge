@@ -21,7 +21,7 @@ export const ModalContent = styled.div`
     background-color: ${({ theme }) => theme.colors.lightWhite1};
     position: relative;
     border-radius: 10px;
-    margin: 25% auto;
+    margin: 22vh auto;
     width: 45%;
     @media only screen and (max-width: 600px) {
         width: 75%;
