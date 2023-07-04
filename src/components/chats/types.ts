@@ -13,8 +13,7 @@ export interface IAppMessage {
 export interface IAppConversation {
     id: string;
     origin: TChatOrigin;
-    previousConversationId: string | null;
-    messages: string;
+    message: string;
     dateCreated: string;
     dateModified: null;
 }

@@ -54,10 +54,9 @@ export const ChatWrapper = styled((props: TChatWrapper) => {
     alignItems: "start",
     flexDirection: chatOrigin === "bot" ? "row" : "row-reverse",
     maxWidth: "75%",
-    margin: "10px 0",
+    margin: "7px 0",
     "@media only screen and (max-width: 600px)": {
         maxWidth: "80%",
-        margin: "7px 0",
     },
 }));
 

@@ -41,7 +41,7 @@ const Chats: FC<IChatWindowProps> = () => {
                                         : getUserInitials(user)}
                                 </ChatAvatar>
                                 <ChatText chatOrigin={item.origin}>
-                                    {item.messages}
+                                    {item.message}
                                 </ChatText>
                             </ChatWrapper>
                         </ChatBubble>
