@@ -3,6 +3,7 @@ import { User } from "gotrue-js";
 import { ISignupValidationErrors } from "@/hooks/useSignup/types";
 import { ILoginValidationErrors } from "@/hooks/useLogin/types";
 import { IAlertProps, ISignupParams } from "@/utils/types";
+import { ISettingsConfig } from "@/hooks/useSettings/types";
 
 export const isEmailValid = (email: string) =>
     !!email
@@ -21,14 +22,8 @@ export const validateLoginDetails = (email: string, password: string) => {
         errors.email.push("Email is not valid");
     }
 
-    if (password.length < 6) {
-        errors.password.push("Password is too short");
-    }
-
-    if (!isPasswordValid(password)) {
-        errors.password.push(
-            "Password must have one numeric digit, one uppercase letter and one lowercase letter"
-        );
+    if (password.length < 1) {
+        errors.password.push("Password cannot be empty");
     }
 
     return errors;
@@ -81,6 +76,48 @@ export const shouldAbortLogin = (
     return loading || Object.values(errors).some(item => item.length !== 0);
 };
 
+export const validateSettingsConfig = ({
+    temperature,
+    tone,
+    outputLength,
+}: ISettingsConfig) => {
+    const errors: {
+        temperature: string[];
+        tone: string[];
+        outputLength: string[];
+    } = { temperature: [], tone: [], outputLength: [] };
+
+    if (
+        temperature.toString() === "" ||
+        Number.isNaN(temperature) ||
+        temperature > 1 ||
+        temperature < 0
+    ) {
+        errors.temperature.push(
+            "Temperature must be a number between 0 and 1, for example: 0.5"
+        );
+    }
+
+    if (tone.length < 1) {
+        errors.tone.push(
+            "Tone cannot be empty, for example: 'comical', 'satirical', 'sarcastic', 'jovial' etc"
+        );
+    }
+
+    if (outputLength.length < 1) {
+        errors.outputLength.push(
+            "Output length cannot be empty, for example: '2 short sentences', 'a long paragraph' etc"
+        );
+    }
+
+    return errors;
+};
+
+export const shouldAbortSettingsSave = (config: ISettingsConfig) => {
+    const errors = validateSettingsConfig(config);
+    return Object.values(errors).some(item => item.length !== 0);
+};
+
 export const shouldAbortSignup = (
     name: string,
     email: string,
@@ -104,8 +141,18 @@ export const triggerAlert = ({
     theme = "dark",
     closeOnClick = true,
     pauseOnHover = true,
+    pauseOnFocusLoss = false,
+    autoClose = 1500,
 }: IAlertProps) => {
-    toast(message, { position, type, theme, closeOnClick, pauseOnHover });
+    toast(message, {
+        position,
+        type,
+        theme,
+        closeOnClick,
+        pauseOnHover,
+        pauseOnFocusLoss,
+        autoClose,
+    });
 };
 
 export const getUserInitials = (user: User | null | undefined) => {
@@ -127,4 +174,15 @@ export const getUserInitials = (user: User | null | undefined) => {
     }, "");
 
     return userInitials;
+};
+
+export const isValidPromptText = (promptText: string | undefined) => {
+    if (promptText && promptText.length > 2) {
+        return true;
+    }
+    triggerAlert({
+        message: "Your message is too short",
+        type: "error",
+    });
+    return false;
 };

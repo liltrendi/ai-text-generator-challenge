@@ -3,6 +3,10 @@ import { User } from "gotrue-js";
 
 export interface IHeaderProps {
     user: User | null | undefined;
+    menuVisible: boolean;
+    toggleMenu: () => void;
+    openSettings: () => void;
+    handleLogout: () => Promise<void>;
 }
 
 export interface IUserMenuProps {
@@ -10,7 +14,7 @@ export interface IUserMenuProps {
 }
 
 export type TUserMenuProps = DetailedHTMLProps<
-    HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
+    HTMLAttributes<HTMLUListElement>,
+    HTMLUListElement
 > &
     IUserMenuProps;

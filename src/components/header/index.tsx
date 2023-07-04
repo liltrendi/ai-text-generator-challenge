@@ -11,15 +11,26 @@ import {
     UserMenu,
     UserMenuIcon,
     UserMenuContent,
+    MenuItem,
 } from "@/components/header/styles";
 import { IHeaderProps } from "@/components/header/types";
-import { useMenu } from "@/hooks/useMenu";
 import { getUserInitials } from "@/utils";
+import { useAuth } from "@/hooks/useAuth";
+import { usePathname } from "next/navigation";
 
-const Header: FC<IHeaderProps> = ({ user }) => {
-    const { visible, toggle, handleLogout } = useMenu();
+const Header: FC<IHeaderProps> = ({
+    user: propsUser,
+    menuVisible,
+    toggleMenu,
+    openSettings,
+    handleLogout,
+}) => {
+    const { user: authUser } = useAuth();
+    const pathname = usePathname();
 
-    if (!user) return undefined;
+    const user = authUser || propsUser;
+
+    if (!user || pathname !== "/") return undefined;
 
     return (
         <HeaderContainer>
@@ -40,15 +51,17 @@ const Header: FC<IHeaderProps> = ({ user }) => {
                 </TextContainer>
             </NavContainer>
             <UserMenu>
-                <UserMenuIcon onClick={toggle} data-testid="header-avatar">
+                <UserMenuIcon onClick={toggleMenu} data-testid="header-avatar">
                     {getUserInitials(user)}
                 </UserMenuIcon>
-                <UserMenuContent
-                    data-testid="header-signout-btn"
-                    isVisible={visible}
-                    onClick={handleLogout}
-                >
-                    Sign out
+                <UserMenuContent isVisible={menuVisible}>
+                    <MenuItem onClick={openSettings}>Settings</MenuItem>
+                    <MenuItem
+                        data-testid="header-signout-btn"
+                        onClick={handleLogout}
+                    >
+                        Logout
+                    </MenuItem>
                 </UserMenuContent>
             </UserMenu>
         </HeaderContainer>

@@ -9,10 +9,21 @@ import { useAuth } from "@/hooks/useAuth";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "@/components/header";
 import { usePathname } from "next/navigation";
+import Prompt from "@/components/prompt";
+import SettingsModal from "@/components/settings";
+import { useMenu } from "@/hooks/useMenu";
 
 const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
     const pathname = usePathname();
     const { loading, user } = useAuth();
+    const {
+        menuVisible,
+        settingsVisible,
+        toggleMenu,
+        openSettings,
+        closeSettings,
+        handleLogout,
+    } = useMenu();
 
     if (loading) {
         return <div>Loading...</div>;
@@ -21,8 +32,21 @@ const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
     return (
         <ThemeProvider theme={theme}>
             <ToastContainer />
-            {pathname === "/" && <Header user={user} />}
+            <SettingsModal
+                settingsVisible={settingsVisible}
+                closeSettings={closeSettings}
+            />
+            {pathname === "/" && (
+                <Header
+                    user={user}
+                    menuVisible={menuVisible}
+                    openSettings={openSettings}
+                    toggleMenu={toggleMenu}
+                    handleLogout={handleLogout}
+                />
+            )}
             {children}
+            {pathname === "/" && <Prompt />}
         </ThemeProvider>
     );
 };

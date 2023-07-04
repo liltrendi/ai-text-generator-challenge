@@ -62,6 +62,7 @@ module.exports = {
         "@typescript-eslint/no-empty-interface": "warn",
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": "warn",
+        "@typescript-eslint/no-empty-function": "warn",
         // "import/no-unresolved": "off",
     },
 };
