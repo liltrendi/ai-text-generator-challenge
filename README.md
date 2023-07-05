@@ -34,7 +34,7 @@
     -   [Installation](#gear-installation)
     -   [Run Locally](#running-run-locally)
     -   [Running Tests](#test_tube-running-tests)
-    -   [Deploying the app](#deploying-the-app)
+    -   [Deploying the app](#bomb-deploying-the-app)
 -   [License](#warning-license)
 -   [Contact](#handshake-contact)
 -   [Acknowledgements](#gem-acknowledgements)
@@ -58,7 +58,7 @@ This web app is hosted on [Netlify](https://netlify.com) (crucial choice as I ne
 ### :camera: Screenshots
 
 <div align="left"> 
-  <img src="public/static/images/demo-chat-ui.png" alt="screenshot" width="400" height="500" />
+  <img src="public/static/images/demo-chat-ui.png" alt="screenshot" />
 </div>
 
 <!-- TechStack -->
