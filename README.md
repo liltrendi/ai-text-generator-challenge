@@ -32,8 +32,9 @@
 -   [Getting Started](#toolbox-getting-started)
     -   [Prerequisites](#bangbang-prerequisites)
     -   [Installation](#gear-installation)
-    -   [Running Tests](#test_tube-running-tests)
     -   [Run Locally](#running-run-locally)
+    -   [Running Tests](#test_tube-running-tests)
+    -   [Deploying the app](#deploying-the-app)
 -   [License](#warning-license)
 -   [Contact](#handshake-contact)
 -   [Acknowledgements](#gem-acknowledgements)
@@ -139,34 +140,6 @@ Open up a terminal, clone (download) the project from [Github](https://github.co
   git clone https://github.com/liltrendi/ai-text-generator-challenge
 ```
 
-<!-- Running Tests -->
-
-### :test_tube: Running Tests
-
-To run one-off tests, run the following command
-
-```bash
-  npm test
-```
-
-Run the following to have the reload on code changes:
-
-```bash
-  npm run test:watch
-```
-
-Update snapshots using:
-
-```bash
-  npm run test:updatesnapshots
-```
-
-Generate coverage reports with:
-
-```bash
-  npm run test:coverage
-```
-
 <!-- Run Locally -->
 
 ### :running: Run Locally
@@ -208,6 +181,58 @@ The above command will authenticate with your Netlify account, package your func
 ```
 
 Remember to set your `env` variables on the Netlify UI as well.
+
+<!-- Running Tests -->
+
+### :test_tube: Running Tests
+
+To run one-off tests, run the following command
+
+```bash
+  npm test
+```
+
+Run the following to have the reload on code changes:
+
+```bash
+  npm run test:watch
+```
+
+Update snapshots using:
+
+```bash
+  npm run test:updatesnapshots
+```
+
+Generate coverage reports with:
+
+```bash
+  npm run test:coverage
+```
+
+<!-- Deploying the app -->
+
+### :bomb: Deploying the app
+
+You will need a [Github](https://github.com) account, and a [Netlify](https://netlify.com) account.
+
+This [guide](https://www.netlify.com/blog/2020/11/30/how-to-deploy-next.js-sites-to-netlify/) provides a step by step procedure for how you can connect your repository and deploy the site on Netlify. The Netlify UI options is more straightforward.
+
+Basically:
+
+1. Visit [this](https://app.netlify.com/start) page (you will have to authorize Netlify on your github account).
+2. Pick your repo to import it into Netlify.
+3. For site configuration, leave the defaults as is (branch to deploy should be `main`, build command should be `npm run build`, publish directory should be `.next`).
+4. Click on the `Advanced` button to expand more configiration options. Here you can set your environment variables, and make sure the "functions directory" is `lambdas` (this should already be set through the `netlify.toml` file).
+5. Click on `Deploy Site`.
+
+To set up authentication, we use Netlify's Identity.
+
+1. Head over to your site that you just deployed, under `Site configuration`, click `Identity`.
+2. Under `Registration`, make sure it says `open`, rather than `invite only`. This allows anyone to sign up.
+3. Under `Confirmation template`, click "Configure" and set "Autoconfirm" to `Yes`. This helps to avoid the confirmation process which would otherwise break the user journey for this challenge.
+
+That should be it!
 
 <!-- License -->
 
