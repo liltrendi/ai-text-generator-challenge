@@ -12,7 +12,7 @@ export const useAuth = () => {
 
     const redirect = useCallback(
         (currentUser: null | undefined | User) => {
-            console.log("redirecting", currentUser, pathname);
+            console.log("redirectingg", currentUser, pathname);
             if (currentUser) {
                 router.replace("/");
                 return;
