@@ -4,7 +4,6 @@ import { ThemeProvider } from "styled-components";
 import Header from "@/components/header";
 import { User } from "gotrue-js";
 import { theme } from "@/theme";
-import { getUserInitials } from "@/utils";
 
 const mockRouterPush = jest.fn();
 
@@ -104,18 +103,10 @@ describe("<Header />", () => {
                 ).toBeInTheDocument();
             });
 
-            it("should render the avatar container of the page", () => {
+            it("should render the settings icon", () => {
                 expect(
                     screen.queryByTestId("header-avatar")
                 ).toBeInTheDocument();
-            });
-
-            it("should render the correct user initials in the avatar container", () => {
-                expect(screen.queryByTestId("header-avatar")?.textContent).toBe(
-                    getUserInitials({
-                        user_metadata: { name: "Charles Xavier" },
-                    } as User)
-                );
             });
 
             it("should render the logout button of the page", () => {

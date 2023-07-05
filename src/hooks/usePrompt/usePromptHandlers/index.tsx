@@ -16,6 +16,7 @@ export const usePromptHandlers = ({
     clearPromptText,
     scrollToBottom,
     appendToStatefulChatHistory,
+    setIsBotTyping,
 }: IUsePromptHandlers) => {
     const { persistMessage, getPersistedMessages } = useLocalPersistence();
     const [sendingPrompt, setSendingPrompt] = useState<boolean>(false);
@@ -43,6 +44,7 @@ export const usePromptHandlers = ({
         };
 
         scrollToBottom();
+        setIsBotTyping(true);
         appendToStatefulChatHistory(craftedMessage);
         await persistMessage(craftedMessage);
 
@@ -63,6 +65,7 @@ export const usePromptHandlers = ({
             appendToStatefulChatHistory(aiMessage);
         }
         setSendingPrompt(false);
+        setIsBotTyping(true);
     }, [promptText, sendingPrompt, persistMessage]);
 
     const handlePromptSubmitOnEnter = useCallback(
@@ -82,6 +85,7 @@ export const usePromptHandlers = ({
             };
 
             scrollToBottom();
+            setIsBotTyping(true);
             appendToStatefulChatHistory(craftedMessage);
             await persistMessage(craftedMessage);
 
@@ -101,7 +105,7 @@ export const usePromptHandlers = ({
                 await persistMessage(aiMessage);
                 appendToStatefulChatHistory(aiMessage);
             }
-
+            setIsBotTyping(false);
             setSendingPrompt(false);
         },
         [promptText, sendingPrompt, persistMessage]

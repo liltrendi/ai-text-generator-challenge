@@ -9,8 +9,14 @@ import { useRouter } from "next/navigation";
 
 const Home = () => {
     const router = useRouter();
-    const { chats, containerRef, scrollToBottom, appendToStatefulChatHistory } =
-        useChatHistory();
+    const {
+        chats,
+        containerRef,
+        scrollToBottom,
+        appendToStatefulChatHistory,
+        isBotTyping,
+        setIsBotTyping,
+    } = useChatHistory();
 
     const user = getCurrentUser();
     if (!user) {
@@ -20,10 +26,15 @@ const Home = () => {
 
     return (
         <AppContainer>
-            <Chats chats={chats} containerRef={containerRef} />
+            <Chats
+                chats={chats}
+                containerRef={containerRef}
+                isBotTyping={isBotTyping}
+            />
             <Prompt
                 scrollToBottom={scrollToBottom}
                 appendToStatefulChatHistory={appendToStatefulChatHistory}
+                setIsBotTyping={setIsBotTyping}
             />
         </AppContainer>
     );

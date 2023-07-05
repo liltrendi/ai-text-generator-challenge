@@ -8,6 +8,7 @@ export const useChatHistory = () => {
     const containerRef = useRef<null | HTMLDivElement>(null);
     const [chats, setChats] = useState<IAppConversation[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [isBotTyping, setIsBotTyping] = useState<boolean>(false);
 
     useEffect(() => {
         (async () => {
@@ -45,5 +46,7 @@ export const useChatHistory = () => {
         appendToStatefulChatHistory,
         containerRef,
         scrollToBottom,
+        isBotTyping,
+        setIsBotTyping,
     };
 };

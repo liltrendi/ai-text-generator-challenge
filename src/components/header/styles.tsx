@@ -60,24 +60,17 @@ export const SubtitleMobile = styled.p`
 
 export const UserMenu = styled.div``;
 
-export const UserMenuIcon = styled.span`
+export const UserMenuIcon = styled(Image)`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${({ theme }) => theme.colors.pink};
-    color: ${({ theme }) => theme.colors.white};
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     border-radius: 50%;
-    max-width: 45px;
-    max-height: 45px;
-    padding: 15px;
-    font-size: 17.5px;
+    min-width: 35px;
+    min-height: 35px;
     @media only screen and (max-width: 600px) {
-        padding: 19px;
-        font-size: 15px;
-        max-width: 30px;
-        max-height: 30px;
+        min-width: 27px;
+        min-height: 27px;
     }
 `;
 
@@ -97,7 +90,7 @@ export const UserMenuContent = styled((props: TUserMenuProps) => {
     cursor: "pointer",
     zIndex: 1,
     "@media only screen and (max-width: 600px)": {
-        transform: "translate(-45px, 20px)",
+        transform: "translate(-50px, 22px)",
         minWidth: "80px",
         fontSize: "16px",
     },

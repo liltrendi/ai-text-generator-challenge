@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
 import {
     TChatAvatarProps,
     TChatBubbleProps,
@@ -97,3 +97,57 @@ export const ChatText = styled((props: TChatTextProps) => {
         fontSize: "16px",
     },
 }));
+
+export const TypingContainer = styled.div`
+    background-color: ${({ theme }) => theme.colors.lightWhite1};
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 0 0 15px;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 19px;
+    height: 47px;
+    @media only screen and (max-width: 600px) {
+        margin: 0 0 0 8px;
+        font-size: 16px;
+    }
+`;
+
+export const typingAnimation = keyframes`
+    0% {
+        transform: scale(1);
+    }
+    33% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+`;
+
+export const TypingBubble = styled.span`
+    background-color: ${({ theme }) => theme.colors.lightGray2};
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin: 3px;
+    animation: ${typingAnimation} 1000ms ease-in-out infinite;
+    animation-delay: 3600ms;
+    &:nth-child(1) {
+        animation-delay: 0ms;
+    }
+    &:nth-child(2) {
+        animation-delay: 333ms;
+    }
+    &:nth-child(3) {
+        animation-delay: 666ms;
+    }
+    @media only screen and (max-width: 600px) {
+        width: 8px;
+        height: 8px;
+    }
+`;
