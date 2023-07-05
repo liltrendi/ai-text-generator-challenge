@@ -16,7 +16,7 @@ import {
 import { IHeaderProps } from "@/components/header/types";
 import { useAuth } from "@/hooks/useAuth";
 import { usePathname } from "next/navigation";
-import SettingsIcon from "@/public/static/images/settings-icon.svg";
+import SettingsIcon from "@/public/static/images/settings-icon.png";
 
 const Header: FC<IHeaderProps> = ({
     user: propsUser,

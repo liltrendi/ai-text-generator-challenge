@@ -65,12 +65,11 @@ export const UserMenuIcon = styled(Image)`
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border-radius: 50%;
-    min-width: 35px;
-    min-height: 35px;
+    width: 48px;
+    height: 48px;
     @media only screen and (max-width: 600px) {
-        min-width: 27px;
-        min-height: 27px;
+        width: 35px;
+        height: 35px;
     }
 `;
 
@@ -82,7 +81,7 @@ export const UserMenuContent = styled((props: TUserMenuProps) => {
     boxShadow: `0px 8px 16px 1px ${theme.colors.black1}`,
     display: isVisible ? "block" : "none",
     background: theme.colors.white,
-    transform: "translate(-50px, 25px)",
+    transform: "translate(-50px, 20px)",
     borderRadius: "5px",
     position: "absolute",
     textAlign: "center",
@@ -90,7 +89,7 @@ export const UserMenuContent = styled((props: TUserMenuProps) => {
     cursor: "pointer",
     zIndex: 1,
     "@media only screen and (max-width: 600px)": {
-        transform: "translate(-50px, 22px)",
+        transform: "translate(-50px, 20px)",
         minWidth: "80px",
         fontSize: "16px",
     },
