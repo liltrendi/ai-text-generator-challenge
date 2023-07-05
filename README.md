@@ -28,10 +28,10 @@
     -   [Tech Stack](#space_invader-tech-stack)
     -   [Features](#dart-features)
     -   [Color Reference](#art-color-reference)
-    -   [Environment Variables](#key-environment-variables)
 -   [Getting Started](#toolbox-getting-started)
     -   [Prerequisites](#bangbang-prerequisites)
     -   [Installation](#gear-installation)
+    -   [Environment Variables](#key-environment-variables)
     -   [Run Locally](#running-run-locally)
     -   [Running Tests](#test_tube-running-tests)
     -   [Deploying the app](#bomb-deploying-the-app)
@@ -171,13 +171,13 @@ The project uses Netlify functions as its API endpoint. To be able to test these
 The lambdas are served from the `lambdas` directory, as specified in the `netlify.toml`. To run them locally:
 
 ```bash
-  netlify dev
+  npm run lambda:dev
 ```
 
 The above command will authenticate with your Netlify account, package your functions and run them. Once your local tests are complete, you can deploy them to production:
 
 ```bash
-  netlify deploy --prod
+  npm run lambda:release
 ```
 
 Remember to set your `env` variables on the Netlify UI as well.
