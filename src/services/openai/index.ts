@@ -7,7 +7,10 @@ import { triggerAlert } from "@/utils";
 import { IAppConversation } from "@/components/chats/types";
 import { v4 as uuidv4 } from "uuid";
 
-const LAMBDA_URL = "http://localhost:8888/.netlify/functions/openai";
+const LAMBDA_URL =
+    process.env.NODE_ENV === "production"
+        ? `${process.env.NEXT_PUBLIC_GOTRUE_SITE_URL}.netlify/functions/openai`
+        : "http://localhost:8888/.netlify/functions/openai";
 
 export const sendUserMessage = async ({
     userMessage,
