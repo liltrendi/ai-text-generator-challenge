@@ -14,6 +14,7 @@ jest.mock("next/navigation", () => ({
             query: "",
             asPath: "",
             push: mockRouterPush,
+            replace: mockRouterPush,
         };
     },
     usePathname() {

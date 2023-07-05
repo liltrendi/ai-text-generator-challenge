@@ -13,12 +13,12 @@ export const useAuth = () => {
     const redirect = useCallback(
         (currentUser: null | undefined | User) => {
             if (currentUser) {
-                router.push("/");
+                router.replace("/");
                 return;
             }
 
             if (pathname === "/") {
-                router.push("/login");
+                router.replace("/login");
             }
         },
         [pathname]
