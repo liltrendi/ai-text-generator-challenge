@@ -114,12 +114,6 @@ This web app is hosted on [Netlify](https://netlify.com) (crucial choice as I ne
 | Red           | ![#FF0000](https://via.placeholder.com/10/FF0000?text=+) #FF0000       |
 | Transparent   | ![#00000000](https://via.placeholder.com/10/00000000?text=+) #00000000 |
 
-<!-- Env Variables -->
-
-### :key: Environment Variables
-
-To run this project, create a `.env` file first, then copy the contents of the `.env.sample` file and paste them in the created file. Finally, obtain the relevant keys and use them in the newly created `.env` file.
-
 <!-- Getting Started -->
 
 ## :toolbox: Getting Started
@@ -139,6 +133,12 @@ Open up a terminal, clone (download) the project from [Github](https://github.co
 ```bash
   git clone https://github.com/liltrendi/ai-text-generator-challenge
 ```
+
+<!-- Env Variables -->
+
+### :key: Environment Variables
+
+To run this project, first create a `.env` file in the project root, then copy the contents of the `.env.sample` file and paste them in the created file. Finally, obtain the relevant keys and use them in the newly created `.env` file.
 
 <!-- Run Locally -->
 
