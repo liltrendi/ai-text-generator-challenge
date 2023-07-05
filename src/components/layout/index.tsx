@@ -7,23 +7,23 @@ import { IAppLayoutProps } from "@/components/layout/types";
 import { theme } from "@/theme";
 import { useAuth } from "@/hooks/useAuth";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "@/components/header";
-import { usePathname } from "next/navigation";
+// import Header from "@/components/header";
+// import { usePathname } from "next/navigation";
 import SettingsModal from "@/components/settings";
 import { useMenu } from "@/hooks/useMenu";
 import { useLocalPersistence } from "@/hooks/useLocalPersistence";
 
-const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
+const AppLayout: FC<IAppLayoutProps> = () => {
     useLocalPersistence();
-    const pathname = usePathname();
-    const { loading, user } = useAuth();
+    // const pathname = usePathname();
+    const { loading } = useAuth();
     const {
-        menuVisible,
+        // menuVisible,
         settingsVisible,
-        toggleMenu,
-        openSettings,
+        // toggleMenu,
+        // openSettings,
         closeSettings,
-        handleLogout,
+        // handleLogout,
     } = useMenu();
 
     if (loading) {
@@ -37,7 +37,7 @@ const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
                 settingsVisible={settingsVisible}
                 closeSettings={closeSettings}
             />
-            {pathname === "/" && (
+            {/* {pathname === "/" && (
                 <Header
                     user={user}
                     menuVisible={menuVisible}
@@ -46,7 +46,7 @@ const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
                     handleLogout={handleLogout}
                 />
             )}
-            {children}
+            {children} */}
         </ThemeProvider>
     );
 };
