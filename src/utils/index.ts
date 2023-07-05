@@ -5,6 +5,8 @@ import { ILoginValidationErrors } from "@/hooks/useLogin/types";
 import { IAlertProps, ISignupParams } from "@/utils/types";
 import { ISettingsConfig } from "@/hooks/useSettings/types";
 
+export const LOCAL_STORAGE_SETTINGS_KEY = "dstbtd_app_settings";
+
 export const isEmailValid = (email: string) =>
     !!email
         .toLowerCase()
@@ -185,4 +187,19 @@ export const isValidPromptText = (promptText: string | undefined) => {
         type: "error",
     });
     return false;
+};
+
+export const getDefaultSettings = () => {
+    const fallbackConfig: ISettingsConfig = {
+        temperature: 0.5,
+        tone: "informal",
+        outputLength: "About 200 words or less",
+    };
+    try {
+        const settings = localStorage.getItem(LOCAL_STORAGE_SETTINGS_KEY);
+        if (settings === null) return fallbackConfig;
+        return JSON.parse(settings);
+    } catch (e) {
+        return fallbackConfig;
+    }
 };

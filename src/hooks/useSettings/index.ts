@@ -9,16 +9,12 @@ import {
     shouldAbortSettingsSave,
     triggerAlert,
     validateSettingsConfig,
+    getDefaultSettings,
+    LOCAL_STORAGE_SETTINGS_KEY,
 } from "@/utils";
 
-const LOCAL_STORAGE_SETTINGS_KEY = "dstbtd_app_settings";
-
 export const useSettings = ({ closeSettings }: IUseSettingsProps) => {
-    const [config, setConfig] = useState<ISettingsConfig>({
-        temperature: 0.5,
-        tone: "informal",
-        outputLength: "About 200 words or less",
-    });
+    const [config, setConfig] = useState<ISettingsConfig>(getDefaultSettings());
 
     const handleConfigChange: THandleConfigChange = useCallback(
         (e: THandleConfigChangeEvent) => {
@@ -27,7 +23,7 @@ export const useSettings = ({ closeSettings }: IUseSettingsProps) => {
                 [e.target.name]: e.target.value,
             }));
         },
-        [config]
+        []
     );
 
     const saveConfig = useCallback(() => {
@@ -54,21 +50,10 @@ export const useSettings = ({ closeSettings }: IUseSettingsProps) => {
         [config]
     );
 
-    const getDefaultSettings = useCallback((): ISettingsConfig => {
-        try {
-            const settings = localStorage.getItem(LOCAL_STORAGE_SETTINGS_KEY);
-            if (settings === null) return config;
-            return JSON.parse(settings);
-        } catch (e) {
-            return config;
-        }
-    }, [config]);
-
     return {
         config,
         validationErrors,
         handleConfigChange,
         saveConfig,
-        getDefaultSettings,
     };
 };
