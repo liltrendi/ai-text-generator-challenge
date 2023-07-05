@@ -18,9 +18,11 @@ export interface IUsePromptHandlers {
     clearPromptText: () => void;
     scrollToBottom: () => void;
     appendToStatefulChatHistory: (message: IAppConversation) => void;
+    setIsBotTyping: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface IUsePromptArgs {
     scrollToBottom: () => void;
     appendToStatefulChatHistory: (message: IAppConversation) => void;
+    setIsBotTyping: Dispatch<SetStateAction<boolean>>;
 }

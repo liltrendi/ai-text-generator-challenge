@@ -13,6 +13,7 @@ export interface IAppConversation {
 export interface IChatWindowProps {
     chats: IAppConversation[];
     containerRef: MutableRefObject<HTMLDivElement | null>;
+    isBotTyping: boolean;
 }
 
 export interface IAppMessage {

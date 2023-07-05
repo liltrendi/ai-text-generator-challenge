@@ -7,11 +7,13 @@ import {
     ChatWindow,
     ChatWrapper,
     EmptyMessage,
+    TypingBubble,
+    TypingContainer,
 } from "@/components/chats/styles";
 import { useAuth } from "@/hooks/useAuth";
 import { getUserInitials } from "@/utils";
 
-const Chats: FC<IChatWindowProps> = ({ chats, containerRef }) => {
+const Chats: FC<IChatWindowProps> = ({ chats, containerRef, isBotTyping }) => {
     const { user } = useAuth();
 
     return (
@@ -46,6 +48,18 @@ const Chats: FC<IChatWindowProps> = ({ chats, containerRef }) => {
                         </ChatBubble>
                     );
                 })
+            )}
+            {isBotTyping && (
+                <ChatWrapper chatOrigin="assistant">
+                    <ChatAvatar chatOrigin="assistant" isAvatarHidden={false}>
+                        AI
+                    </ChatAvatar>
+                    <TypingContainer>
+                        <TypingBubble />
+                        <TypingBubble />
+                        <TypingBubble />
+                    </TypingContainer>
+                </ChatWrapper>
             )}
         </ChatWindow>
     );

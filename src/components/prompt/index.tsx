@@ -11,9 +11,14 @@ import { usePrompt } from "@/hooks/usePrompt";
 const Prompt: FC<IPromptProps> = ({
     scrollToBottom,
     appendToStatefulChatHistory,
+    setIsBotTyping,
 }) => {
     const { promptText, handleTextChange, handlePromptSubmitOnClick } =
-        usePrompt({ appendToStatefulChatHistory, scrollToBottom });
+        usePrompt({
+            appendToStatefulChatHistory,
+            scrollToBottom,
+            setIsBotTyping,
+        });
 
     return (
         <InputContainer>
