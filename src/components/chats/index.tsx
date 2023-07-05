@@ -39,9 +39,12 @@ const Chats: FC<IChatWindowProps> = ({ chats, containerRef }) => {
                                         ? "AI"
                                         : getUserInitials(user)}
                                 </ChatAvatar>
-                                <ChatText chatOrigin={item.origin}>
-                                    {item.message}
-                                </ChatText>
+                                <ChatText
+                                    chatOrigin={item.origin}
+                                    dangerouslySetInnerHTML={{
+                                        __html: item.message,
+                                    }}
+                                />
                             </ChatWrapper>
                         </ChatBubble>
                     );
