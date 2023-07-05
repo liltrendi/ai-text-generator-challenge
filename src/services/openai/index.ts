@@ -11,7 +11,7 @@ import { getCurrentUser } from "@/services/auth";
 const LAMBDA_URL =
     process.env.NODE_ENV === "production"
         ? `${process.env.NEXT_PUBLIC_GOTRUE_SITE_URL}.netlify/functions/openai`
-        : "http://localhost:8888/.netlify/functions/openai";
+        : `${process.env.NEXT_PUBLIC_LOCAL_ENDPOINT_URL}.netlify/functions/openai`;
 
 export const sendUserMessage = async ({
     userMessage,
