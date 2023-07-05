@@ -16,6 +16,7 @@ export const usePromptHandlers = ({
     promptText,
     setPromptText,
     clearPromptText,
+    scrollToBottom,
     appendToStatefulChatHistory,
 }: IUsePromptHandlers) => {
     const { user } = useAuth();
@@ -45,6 +46,7 @@ export const usePromptHandlers = ({
             dateModified: null,
         };
 
+        scrollToBottom();
         appendToStatefulChatHistory(craftedMessage);
         await persistMessage(craftedMessage);
 
@@ -82,6 +84,7 @@ export const usePromptHandlers = ({
                 dateModified: null,
             };
 
+            scrollToBottom();
             appendToStatefulChatHistory(craftedMessage);
             await persistMessage(craftedMessage);
 

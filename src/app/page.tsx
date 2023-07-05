@@ -6,12 +6,16 @@ import Prompt from "@/components/prompt";
 import { useChatHistory } from "@/hooks/useChatHistory";
 
 const Home = () => {
-    const { chats, appendToStatefulChatHistory } = useChatHistory();
+    const { chats, containerRef, scrollToBottom, appendToStatefulChatHistory } =
+        useChatHistory();
 
     return (
         <AppContainer>
-            <Chats chats={chats} />
-            <Prompt appendToStatefulChatHistory={appendToStatefulChatHistory} />
+            <Chats chats={chats} containerRef={containerRef} />
+            <Prompt
+                scrollToBottom={scrollToBottom}
+                appendToStatefulChatHistory={appendToStatefulChatHistory}
+            />
         </AppContainer>
     );
 };

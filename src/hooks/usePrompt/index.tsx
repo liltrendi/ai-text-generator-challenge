@@ -3,7 +3,10 @@ import { usePromptHandlers } from "@/hooks/usePrompt/usePromptHandlers";
 import { usePromptEvents } from "@/hooks/usePrompt/usePromptEvents";
 import { IUsePromptArgs } from "@/hooks/usePrompt/types";
 
-export const usePrompt = ({ appendToStatefulChatHistory }: IUsePromptArgs) => {
+export const usePrompt = ({
+    scrollToBottom,
+    appendToStatefulChatHistory,
+}: IUsePromptArgs) => {
     const { promptText, setPromptText, clearPromptText } = usePromptState();
     const {
         handleTextChange,
@@ -13,6 +16,7 @@ export const usePrompt = ({ appendToStatefulChatHistory }: IUsePromptArgs) => {
         promptText,
         setPromptText,
         clearPromptText,
+        scrollToBottom,
         appendToStatefulChatHistory,
     });
     usePromptEvents(handlePromptSubmitOnEnter);

@@ -11,11 +11,11 @@ import {
 import { useAuth } from "@/hooks/useAuth";
 import { getUserInitials } from "@/utils";
 
-const Chats: FC<IChatWindowProps> = ({ chats }) => {
+const Chats: FC<IChatWindowProps> = ({ chats, containerRef }) => {
     const { user } = useAuth();
 
     return (
-        <ChatWindow>
+        <ChatWindow ref={containerRef}>
             {chats.length === 0 ? (
                 <EmptyMessage>
                     No conversations to see here. Type in your message below to

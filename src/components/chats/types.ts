@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { DetailedHTMLProps, HTMLAttributes, MutableRefObject } from "react";
 
 export type TChatOrigin = "user" | "assistant";
 
@@ -12,6 +12,7 @@ export interface IAppConversation {
 
 export interface IChatWindowProps {
     chats: IAppConversation[];
+    containerRef: MutableRefObject<HTMLDivElement | null>;
 }
 
 export interface IAppMessage {
