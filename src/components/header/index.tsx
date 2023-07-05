@@ -14,9 +14,9 @@ import {
     MenuItem,
 } from "@/components/header/styles";
 import { IHeaderProps } from "@/components/header/types";
-import { getUserInitials } from "@/utils";
 import { useAuth } from "@/hooks/useAuth";
 import { usePathname } from "next/navigation";
+import SettingsIcon from "@/public/static/images/settings-icon.svg";
 
 const Header: FC<IHeaderProps> = ({
     user: propsUser,
@@ -51,9 +51,12 @@ const Header: FC<IHeaderProps> = ({
                 </TextContainer>
             </NavContainer>
             <UserMenu>
-                <UserMenuIcon onClick={toggleMenu} data-testid="header-avatar">
-                    {getUserInitials(user)}
-                </UserMenuIcon>
+                <UserMenuIcon
+                    src={SettingsIcon}
+                    alt="Settings"
+                    onClick={toggleMenu}
+                    data-testid="header-avatar"
+                />
                 <UserMenuContent isVisible={menuVisible}>
                     <MenuItem onClick={openSettings}>Settings</MenuItem>
                     <MenuItem

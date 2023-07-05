@@ -146,4 +146,8 @@ export const TypingBubble = styled.span`
     &:nth-child(3) {
         animation-delay: 666ms;
     }
+    @media only screen and (max-width: 600px) {
+        width: 8px;
+        height: 8px;
+    }
 `;
