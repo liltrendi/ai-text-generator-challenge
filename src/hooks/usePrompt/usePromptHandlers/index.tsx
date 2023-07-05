@@ -5,12 +5,18 @@ import {
     TTextChangeHandler,
 } from "@/hooks/usePrompt/types";
 import { isValidPromptText } from "@/utils";
+// import { sendUserMessage } from "@/services/openai";
+import { useLocalPersistence } from "@/hooks/useLocalPersistence";
+import { IAppConversation } from "@/components/chats/types";
+import { v4 as uuidv4 } from "uuid";
 
 export const usePromptHandlers = ({
     promptText,
     setPromptText,
     clearPromptText,
+    appendToStatefulChatHistory,
 }: IUsePromptHandlers) => {
+    const { persistMessage } = useLocalPersistence();
     const [sendingPrompt, setSendingPrompt] = useState<boolean>(false);
 
     const handleTextChange: TTextChangeHandler = useCallback(
@@ -27,9 +33,22 @@ export const usePromptHandlers = ({
         const isValid = isValidPromptText(userMessage);
         if (!isValid) return;
 
+        const craftedMessage: IAppConversation = {
+            id: uuidv4(),
+            origin: "user",
+            message: userMessage,
+            dateCreated: new Date().toISOString(),
+            dateModified: null,
+        };
+
+        appendToStatefulChatHistory(craftedMessage);
+
         clearPromptText();
         setSendingPrompt(true);
-        // process input
+        // await sendUserMessage({userMessage, chatHistory})
+        if (true) {
+            await persistMessage(craftedMessage);
+        }
         setSendingPrompt(false);
     }, [promptText, sendingPrompt]);
 
@@ -37,13 +56,27 @@ export const usePromptHandlers = ({
         async (promptTextOnEnter?: string) => {
             if (sendingPrompt) return;
 
-            const userMessage = promptText || promptTextOnEnter || undefined;
+            const userMessage = promptText || promptTextOnEnter || "";
             const isValid = isValidPromptText(userMessage);
             if (!isValid) return;
+
+            const craftedMessage: IAppConversation = {
+                id: uuidv4(),
+                origin: "user",
+                message: userMessage,
+                dateCreated: new Date().toISOString(),
+                dateModified: null,
+            };
+
+            appendToStatefulChatHistory(craftedMessage);
 
             clearPromptText();
             setSendingPrompt(true);
             // process input
+            // await sendUserMessage({userMessage, chatHistory})
+            if (true) {
+                await persistMessage(craftedMessage);
+            }
             setSendingPrompt(false);
         },
         [promptText, sendingPrompt]

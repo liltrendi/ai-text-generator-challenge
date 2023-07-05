@@ -1,14 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-export interface IChatWindowProps {}
-
 export type TChatOrigin = "user" | "assistant";
-
-export interface IAppMessage {
-    id: string;
-    origin: TChatOrigin;
-    dateCreated: string;
-}
 
 export interface IAppConversation {
     id: string;
@@ -16,6 +8,16 @@ export interface IAppConversation {
     message: string;
     dateCreated: string;
     dateModified: null;
+}
+
+export interface IChatWindowProps {
+    chats: IAppConversation[];
+}
+
+export interface IAppMessage {
+    id: string;
+    origin: TChatOrigin;
+    dateCreated: string;
 }
 
 export interface IChatType {

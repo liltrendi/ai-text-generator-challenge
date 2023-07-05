@@ -8,7 +8,7 @@ describe("<Prompt />", () => {
     describe("given that the component is mounted", () => {
         render(
             <ThemeProvider theme={theme}>
-                <Prompt />
+                <Prompt appendToStatefulChatHistory={() => ({})} />
             </ThemeProvider>
         );
     });
