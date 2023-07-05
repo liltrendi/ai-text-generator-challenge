@@ -9,14 +9,12 @@ import {
     shouldAbortSettingsSave,
     triggerAlert,
     validateSettingsConfig,
+    getDefaultSettings,
+    LOCAL_STORAGE_SETTINGS_KEY,
 } from "@/utils";
 
 export const useSettings = ({ closeSettings }: IUseSettingsProps) => {
-    const [config, setConfig] = useState<ISettingsConfig>({
-        temperature: 0.5,
-        tone: "informal",
-        outputLength: "About 200 words or less",
-    });
+    const [config, setConfig] = useState<ISettingsConfig>(getDefaultSettings());
 
     const handleConfigChange: THandleConfigChange = useCallback(
         (e: THandleConfigChangeEvent) => {
@@ -25,7 +23,7 @@ export const useSettings = ({ closeSettings }: IUseSettingsProps) => {
                 [e.target.name]: e.target.value,
             }));
         },
-        [config]
+        []
     );
 
     const saveConfig = useCallback(() => {
@@ -36,7 +34,10 @@ export const useSettings = ({ closeSettings }: IUseSettingsProps) => {
             });
             return;
         }
-        // save
+        localStorage.setItem(
+            LOCAL_STORAGE_SETTINGS_KEY,
+            JSON.stringify(config)
+        );
         triggerAlert({
             message: "Your settings have been updated",
             type: "success",

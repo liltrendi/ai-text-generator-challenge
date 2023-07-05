@@ -1,14 +1,6 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { DetailedHTMLProps, HTMLAttributes, MutableRefObject } from "react";
 
-export interface IChatWindowProps {}
-
-export type TChatOrigin = "user" | "bot";
-
-export interface IAppMessage {
-    id: string;
-    origin: TChatOrigin;
-    dateCreated: string;
-}
+export type TChatOrigin = "user" | "assistant";
 
 export interface IAppConversation {
     id: string;
@@ -16,6 +8,17 @@ export interface IAppConversation {
     message: string;
     dateCreated: string;
     dateModified: null;
+}
+
+export interface IChatWindowProps {
+    chats: IAppConversation[];
+    containerRef: MutableRefObject<HTMLDivElement | null>;
+}
+
+export interface IAppMessage {
+    id: string;
+    origin: TChatOrigin;
+    dateCreated: string;
 }
 
 export interface IChatType {

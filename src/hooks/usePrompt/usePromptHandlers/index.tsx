@@ -4,13 +4,22 @@ import {
     TTextChangeEvent,
     TTextChangeHandler,
 } from "@/hooks/usePrompt/types";
-import { isValidPromptText } from "@/utils";
+import { getDefaultSettings, isValidPromptText } from "@/utils";
+import { sendUserMessage } from "@/services/openai";
+import { useLocalPersistence } from "@/hooks/useLocalPersistence";
+import { IAppConversation } from "@/components/chats/types";
+import { v4 as uuidv4 } from "uuid";
+import { useAuth } from "@/hooks/useAuth";
 
 export const usePromptHandlers = ({
     promptText,
     setPromptText,
     clearPromptText,
+    scrollToBottom,
+    appendToStatefulChatHistory,
 }: IUsePromptHandlers) => {
+    const { user } = useAuth();
+    const { persistMessage, getPersistedMessages } = useLocalPersistence();
     const [sendingPrompt, setSendingPrompt] = useState<boolean>(false);
 
     const handleTextChange: TTextChangeHandler = useCallback(
@@ -27,26 +36,75 @@ export const usePromptHandlers = ({
         const isValid = isValidPromptText(userMessage);
         if (!isValid) return;
 
+        const craftedMessage: IAppConversation = {
+            id: uuidv4(),
+            origin: "user",
+            message: userMessage,
+            dateCreated: new Date().toISOString(),
+            dateModified: null,
+        };
+
+        scrollToBottom();
+        appendToStatefulChatHistory(craftedMessage);
+        await persistMessage(craftedMessage);
+
         clearPromptText();
         setSendingPrompt(true);
-        // process input
+
+        const chatHistory = await getPersistedMessages();
+        const settings = getDefaultSettings();
+        const aiMessage = await sendUserMessage({
+            userMessage,
+            chatHistory,
+            user,
+            settings,
+        });
+        if (aiMessage) {
+            await persistMessage(aiMessage);
+            appendToStatefulChatHistory(aiMessage);
+        }
         setSendingPrompt(false);
-    }, [promptText, sendingPrompt]);
+    }, [promptText, sendingPrompt, user, persistMessage]);
 
     const handlePromptSubmitOnEnter = useCallback(
         async (promptTextOnEnter?: string) => {
             if (sendingPrompt) return;
 
-            const userMessage = promptText || promptTextOnEnter || undefined;
+            const userMessage = promptText || promptTextOnEnter || "";
             const isValid = isValidPromptText(userMessage);
             if (!isValid) return;
 
+            const craftedMessage: IAppConversation = {
+                id: uuidv4(),
+                origin: "user",
+                message: userMessage,
+                dateCreated: new Date().toISOString(),
+                dateModified: null,
+            };
+
+            scrollToBottom();
+            appendToStatefulChatHistory(craftedMessage);
+            await persistMessage(craftedMessage);
+
             clearPromptText();
             setSendingPrompt(true);
-            // process input
+
+            const chatHistory = await getPersistedMessages();
+            const settings = getDefaultSettings();
+            const aiMessage = await sendUserMessage({
+                userMessage,
+                chatHistory,
+                user,
+                settings,
+            });
+            if (aiMessage) {
+                await persistMessage(aiMessage);
+                appendToStatefulChatHistory(aiMessage);
+            }
+
             setSendingPrompt(false);
         },
-        [promptText, sendingPrompt]
+        [promptText, sendingPrompt, user, persistMessage]
     );
 
     return {

@@ -1,3 +1,4 @@
+import { IAppConversation } from "@/components/chats/types";
 import {
     ChangeEvent,
     ChangeEventHandler,
@@ -15,4 +16,11 @@ export interface IUsePromptHandlers {
     promptText: string;
     setPromptText: Dispatch<SetStateAction<string>>;
     clearPromptText: () => void;
+    scrollToBottom: () => void;
+    appendToStatefulChatHistory: (message: IAppConversation) => void;
+}
+
+export interface IUsePromptArgs {
+    scrollToBottom: () => void;
+    appendToStatefulChatHistory: (message: IAppConversation) => void;
 }

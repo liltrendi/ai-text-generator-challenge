@@ -8,9 +8,12 @@ import {
 import SendIcon from "@/public/static/images/send-icon.svg";
 import { usePrompt } from "@/hooks/usePrompt";
 
-const Prompt: FC<IPromptProps> = () => {
+const Prompt: FC<IPromptProps> = ({
+    scrollToBottom,
+    appendToStatefulChatHistory,
+}) => {
     const { promptText, handleTextChange, handlePromptSubmitOnClick } =
-        usePrompt();
+        usePrompt({ appendToStatefulChatHistory, scrollToBottom });
 
     return (
         <InputContainer>

@@ -9,11 +9,12 @@ import { useAuth } from "@/hooks/useAuth";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "@/components/header";
 import { usePathname } from "next/navigation";
-import Prompt from "@/components/prompt";
 import SettingsModal from "@/components/settings";
 import { useMenu } from "@/hooks/useMenu";
+import { useLocalPersistence } from "@/hooks/useLocalPersistence";
 
 const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
+    useLocalPersistence();
     const pathname = usePathname();
     const { loading, user } = useAuth();
     const {
@@ -46,7 +47,6 @@ const AppLayout: FC<IAppLayoutProps> = ({ children }) => {
                 />
             )}
             {children}
-            {pathname === "/" && <Prompt />}
         </ThemeProvider>
     );
 };
