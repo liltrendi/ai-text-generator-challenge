@@ -6,6 +6,7 @@ import {
 import { triggerAlert } from "@/utils";
 import { IAppConversation } from "@/components/chats/types";
 import { v4 as uuidv4 } from "uuid";
+import { getCurrentUser } from "@/services/auth";
 
 const LAMBDA_URL =
     process.env.NODE_ENV === "production"
@@ -15,9 +16,10 @@ const LAMBDA_URL =
 export const sendUserMessage = async ({
     userMessage,
     chatHistory,
-    user,
     settings,
 }: ISendUserMessageArgs): Promise<IAppConversation | null> => {
+    const user = getCurrentUser();
+
     const requestBody = {
         ...settings,
         userName: user?.user_metadata.name,

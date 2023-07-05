@@ -9,7 +9,6 @@ import { sendUserMessage } from "@/services/openai";
 import { useLocalPersistence } from "@/hooks/useLocalPersistence";
 import { IAppConversation } from "@/components/chats/types";
 import { v4 as uuidv4 } from "uuid";
-import { useAuth } from "@/hooks/useAuth";
 
 export const usePromptHandlers = ({
     promptText,
@@ -18,7 +17,6 @@ export const usePromptHandlers = ({
     scrollToBottom,
     appendToStatefulChatHistory,
 }: IUsePromptHandlers) => {
-    const { user } = useAuth();
     const { persistMessage, getPersistedMessages } = useLocalPersistence();
     const [sendingPrompt, setSendingPrompt] = useState<boolean>(false);
 
@@ -51,12 +49,13 @@ export const usePromptHandlers = ({
         clearPromptText();
         setSendingPrompt(true);
 
-        const chatHistory = await getPersistedMessages();
+        const chatHistory: IAppConversation[] = (
+            await getPersistedMessages()
+        ).filter(({ id }) => id !== craftedMessage.id);
         const settings = getDefaultSettings();
         const aiMessage = await sendUserMessage({
             userMessage,
             chatHistory,
-            user,
             settings,
         });
         if (aiMessage) {
@@ -64,7 +63,7 @@ export const usePromptHandlers = ({
             appendToStatefulChatHistory(aiMessage);
         }
         setSendingPrompt(false);
-    }, [promptText, sendingPrompt, user, persistMessage]);
+    }, [promptText, sendingPrompt, persistMessage]);
 
     const handlePromptSubmitOnEnter = useCallback(
         async (promptTextOnEnter?: string) => {
@@ -89,12 +88,13 @@ export const usePromptHandlers = ({
             clearPromptText();
             setSendingPrompt(true);
 
-            const chatHistory = await getPersistedMessages();
+            const chatHistory: IAppConversation[] = (
+                await getPersistedMessages()
+            ).filter(({ id }) => id !== craftedMessage.id);
             const settings = getDefaultSettings();
             const aiMessage = await sendUserMessage({
                 userMessage,
                 chatHistory,
-                user,
                 settings,
             });
             if (aiMessage) {
@@ -104,7 +104,7 @@ export const usePromptHandlers = ({
 
             setSendingPrompt(false);
         },
-        [promptText, sendingPrompt, user, persistMessage]
+        [promptText, sendingPrompt, persistMessage]
     );
 
     return {

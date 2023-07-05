@@ -9,16 +9,14 @@ export const getPromptTemplate = (body: ILambdaBody) => {
     const { userName, userMessage, tone, outputLength } = body;
 
     const PROMPT_TEMPLATE = `
-        You are a human masquerading as a bot on a chatbot interface on a website whose users speak with you on a daily basis. Right now, a ${
-            userName ? `person named ${userName}` : "user"
-        } wants to speak with you. "${tone}" should be your tone, and "${outputLength}" should be how long your response is. Here is their message: "${userMessage}"
+        I want you to act as a human on a versatile platform that caters to casual users seeking fun and engaging text-generation experiences but also functions as a powerful tool for professional writers, content creators and individuals in creative fields. Engage in conversation based off of the messages I give you. Your replies should not exceed ${outputLength}. Use a ${tone} tone. Their first message is: ${`My name is ${userName}. ${userMessage}`}. 
     `;
 
     return PROMPT_TEMPLATE;
 };
 
 export const buildChatContext = (body: ILambdaBody) => {
-    const { userMessage, previousMessages } = body;
+    const { previousMessages } = body;
 
     let messageHistory: IMessageHistory[] = [];
 
@@ -35,13 +33,8 @@ export const buildChatContext = (body: ILambdaBody) => {
         );
     }
 
-    // if there are no previous conversations, signifying the start of a new one, inject the prompt
-    if (messageHistory.length === 0) {
-        messageHistory.push({ role: "user", content: getPromptTemplate(body) });
-    } else {
-        // otherwise, just continue the conversation with the user's latest message
-        messageHistory.push({ role: "user", content: userMessage });
-    }
+    // add th current message from the user
+    messageHistory.push({ role: "user", content: getPromptTemplate(body) });
 
     return messageHistory;
 };
@@ -50,9 +43,9 @@ export const serverError = ({ code, message, error }: IServerErrorResponse) => {
     return {
         statusCode: code,
         body: JSON.stringify({ message, error }),
-        headers: {
-            "access-control-allow-origin": "*",
-        },
+        // headers: {
+        //     "access-control-allow-origin": "*",
+        // },
     };
 };
 
@@ -60,8 +53,8 @@ export const serverSuccess = ({ code, body }: IServerSuccessResponse) => {
     return {
         statusCode: code,
         body,
-        headers: {
-            "access-control-allow-origin": "*",
-        },
+        // headers: {
+        //     "access-control-allow-origin": "*",
+        // },
     };
 };
