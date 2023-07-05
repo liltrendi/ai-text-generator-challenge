@@ -11,10 +11,10 @@ import "react-toastify/dist/ReactToastify.css";
 // import { usePathname } from "next/navigation";
 import SettingsModal from "@/components/settings";
 import { useMenu } from "@/hooks/useMenu";
-import { useLocalPersistence } from "@/hooks/useLocalPersistence";
+// import { useLocalPersistence } from "@/hooks/useLocalPersistence";
 
 const AppLayout: FC<IAppLayoutProps> = () => {
-    useLocalPersistence();
+    // useLocalPersistence();
     // const pathname = usePathname();
     const { loading } = useAuth();
     const {
