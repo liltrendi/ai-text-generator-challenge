@@ -28,12 +28,29 @@ import {
 import { ISignupProps } from "@/app/signup/types";
 import AppLogo from "@/public/static/images/app-logo.svg";
 import { useSignup } from "@/hooks/useSignup";
+import { getCurrentUser } from "@/services/auth";
+import { useRouter } from "next/navigation";
 
 const poppins = Poppins({ weight: ["400", "600", "700"], subsets: ["latin"] });
 
 const Signup: FC<ISignupProps> = () => {
-    const { name, email, password, confirmPassword, handleTextChange, validationErrors, handleSignup, loading } =
-        useSignup();
+    const router = useRouter();
+    const {
+        name,
+        email,
+        password,
+        confirmPassword,
+        handleTextChange,
+        validationErrors,
+        handleSignup,
+        loading,
+    } = useSignup();
+
+    const user = getCurrentUser();
+    if (user) {
+        router.push("/");
+        return undefined;
+    }
 
     return (
         <PageContainer className={poppins.className}>
@@ -104,7 +121,9 @@ const Signup: FC<ISignupProps> = () => {
                     )}
                 </PasswordContainer>
                 <PasswordContainer>
-                    <PasswordLabel htmlFor="password">Confirm password</PasswordLabel>
+                    <PasswordLabel htmlFor="password">
+                        Confirm password
+                    </PasswordLabel>
                     <PasswordInput
                         id="confirmPassword"
                         name="confirmPassword"
@@ -121,16 +140,18 @@ const Signup: FC<ISignupProps> = () => {
                     )}
                 </PasswordContainer>
                 <ButtonsContainer>
-                <SignupButton onClick={handleSignup} data-testid="signup-btn" disabled={loading}>
-                    Sign Up
-                </SignupButton>
-                <LoginLink href="/login">
-                    Log in instead?
-                </LoginLink>
+                    <SignupButton
+                        onClick={handleSignup}
+                        data-testid="signup-btn"
+                        disabled={loading}
+                    >
+                        Sign Up
+                    </SignupButton>
+                    <LoginLink href="/login">Log in instead?</LoginLink>
                 </ButtonsContainer>
             </SignupContainer>
         </PageContainer>
     );
 };
 
-export default Signup
+export default Signup;

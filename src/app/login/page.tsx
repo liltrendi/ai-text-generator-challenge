@@ -25,10 +25,13 @@ import { ILoginProps } from "@/app/login/types";
 import AppLogo from "@/public/static/images/app-logo.svg";
 import { useLogin } from "@/hooks/useLogin";
 import { FC } from "react";
+import { getCurrentUser } from "@/services/auth";
+import { useRouter } from "next/navigation";
 
 const poppins = Poppins({ weight: ["400", "600", "700"], subsets: ["latin"] });
 
 const Login: FC<ILoginProps> = () => {
+    const router = useRouter();
     const {
         email,
         password,
@@ -37,6 +40,12 @@ const Login: FC<ILoginProps> = () => {
         handleLogin,
         loading,
     } = useLogin();
+
+    const user = getCurrentUser();
+    if (user) {
+        router.push("/");
+        return undefined;
+    }
 
     return (
         <PageContainer className={poppins.className}>
