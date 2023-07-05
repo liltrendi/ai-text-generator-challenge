@@ -189,6 +189,26 @@ Start the server
   npm run dev
 ```
 
+The project uses Netlify functions as its API endpoint. To be able to test these functions locally, you need `netlify-cli`:
+
+```bash
+  npm i -g netlify-cli
+```
+
+The lambdas are served from the `lambdas` directory, as specified in the `netlify.toml`. To run them locally:
+
+```bash
+  netlify dev
+```
+
+The above command will authenticate with your Netlify account, package your functions and run them. Once your local tests are complete, you can deploy them to production:
+
+```bash
+  netlify deploy --prod
+```
+
+Remember to set your `env` variables on the Netlify UI as well.
+
 <!-- License -->
 
 ## :warning: License
