@@ -38,7 +38,9 @@ export const useLocalPersistence = () => {
     const persistMessage = useCallback(async (message: IAppConversation) => {
         try {
             const db = await createDatabase();
-            if (!db) throw new Error("Message was not saved");
+            if (!db) {
+                throw new Error("Message was not saved");
+            }
             await db.add(STORE_NAME, message);
             return message;
         } catch (e) {
@@ -51,7 +53,10 @@ export const useLocalPersistence = () => {
         try {
             const db = await createDatabase();
             if (!db) throw new Error("Could not retrieve chat history");
-            const messages = await db.getAll(STORE_NAME);
+            const messages = await db.getAllFromIndex(
+                STORE_NAME,
+                "dateCreated"
+            );
             return messages;
         } catch (e) {
             triggerAlert({

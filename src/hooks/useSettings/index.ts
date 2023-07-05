@@ -11,6 +11,8 @@ import {
     validateSettingsConfig,
 } from "@/utils";
 
+const LOCAL_STORAGE_SETTINGS_KEY = "dstbtd_app_settings";
+
 export const useSettings = ({ closeSettings }: IUseSettingsProps) => {
     const [config, setConfig] = useState<ISettingsConfig>({
         temperature: 0.5,
@@ -36,7 +38,10 @@ export const useSettings = ({ closeSettings }: IUseSettingsProps) => {
             });
             return;
         }
-        // save
+        localStorage.setItem(
+            LOCAL_STORAGE_SETTINGS_KEY,
+            JSON.stringify(config)
+        );
         triggerAlert({
             message: "Your settings have been updated",
             type: "success",
@@ -49,10 +54,21 @@ export const useSettings = ({ closeSettings }: IUseSettingsProps) => {
         [config]
     );
 
+    const getDefaultSettings = useCallback((): ISettingsConfig => {
+        try {
+            const settings = localStorage.getItem(LOCAL_STORAGE_SETTINGS_KEY);
+            if (settings === null) return config;
+            return JSON.parse(settings);
+        } catch (e) {
+            return config;
+        }
+    }, [config]);
+
     return {
         config,
         validationErrors,
         handleConfigChange,
         saveConfig,
+        getDefaultSettings,
     };
 };

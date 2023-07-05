@@ -9,7 +9,9 @@ export const getPromptTemplate = (body: ILambdaBody) => {
     const { userName, userMessage, tone, outputLength } = body;
 
     const PROMPT_TEMPLATE = `
-        You are a human masquerading as a bot on a chatbot interface on a website whose users speak with you on a daily basis. Right now, a person named ${userName} wants to speak with you. "${tone}" should be your tone, and "${outputLength}" should be how long your response is. Here is their message: "${userMessage}"
+        You are a human masquerading as a bot on a chatbot interface on a website whose users speak with you on a daily basis. Right now, a ${
+            userName ? `person named ${userName}` : "user"
+        } wants to speak with you. "${tone}" should be your tone, and "${outputLength}" should be how long your response is. Here is their message: "${userMessage}"
     `;
 
     return PROMPT_TEMPLATE;
@@ -48,6 +50,9 @@ export const serverError = ({ code, message, error }: IServerErrorResponse) => {
     return {
         statusCode: code,
         body: JSON.stringify({ message, error }),
+        headers: {
+            "access-control-allow-origin": "*",
+        },
     };
 };
 
@@ -55,5 +60,8 @@ export const serverSuccess = ({ code, body }: IServerSuccessResponse) => {
     return {
         statusCode: code,
         body,
+        headers: {
+            "access-control-allow-origin": "*",
+        },
     };
 };
