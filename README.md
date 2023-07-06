@@ -238,6 +238,8 @@ To set up authentication, we use Netlify's Identity.
 2. Under `Registration`, make sure it says `open`, rather than `invite only`. This allows anyone to sign up.
 3. Under `Confirmation template`, click "Configure" and set "Autoconfirm" to `Yes`. This helps to avoid the confirmation process which would otherwise break the user journey for this challenge.
 
+Side note, on the Netlify Dashboard, please set an environment variable called `NPM_FLAGS` with the value of `--legacy-peer-deps`, which basically prevents your Next build from crashing due to unresolved dependencies required by other libraries within the app.
+
 That should be it!
 
 <!-- License -->
