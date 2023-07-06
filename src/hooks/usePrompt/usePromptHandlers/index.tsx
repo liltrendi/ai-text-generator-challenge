@@ -15,7 +15,7 @@ export const usePromptHandlers = ({
     setPromptText,
     clearPromptText,
     scrollToBottom,
-    appendToStatefulChatHistory,
+    updateReactiveChatHistory,
     setIsBotTyping,
 }: IUsePromptHandlers) => {
     const { persistMessage, getPersistedMessages } = useLocalPersistence();
@@ -43,29 +43,35 @@ export const usePromptHandlers = ({
             dateModified: null,
         };
 
-        scrollToBottom();
-        setIsBotTyping(true);
-        appendToStatefulChatHistory(craftedMessage);
-        await persistMessage(craftedMessage);
-
+        updateReactiveChatHistory(craftedMessage);
         clearPromptText();
+        setIsBotTyping(true);
         setSendingPrompt(true);
+        scrollToBottom();
 
+        const settings = getDefaultSettings();
         const chatHistory: IAppConversation[] = (
             await getPersistedMessages()
         ).filter(({ id }) => id !== craftedMessage.id);
-        const settings = getDefaultSettings();
+
         const aiMessage = await sendUserMessage({
             userMessage,
             chatHistory,
             settings,
         });
-        if (aiMessage) {
-            await persistMessage(aiMessage);
-            appendToStatefulChatHistory(aiMessage);
+
+        if (!aiMessage) {
+            craftedMessage.messageUnsuccessful = true;
         }
+
+        await persistMessage(craftedMessage);
+        await persistMessage(aiMessage);
+
+        updateReactiveChatHistory(craftedMessage);
+        if (aiMessage) updateReactiveChatHistory(aiMessage);
+
         setSendingPrompt(false);
-        setIsBotTyping(true);
+        setIsBotTyping(false);
     }, [promptText, sendingPrompt, persistMessage]);
 
     const handlePromptSubmitOnEnter = useCallback(
@@ -84,29 +90,35 @@ export const usePromptHandlers = ({
                 dateModified: null,
             };
 
-            scrollToBottom();
-            setIsBotTyping(true);
-            appendToStatefulChatHistory(craftedMessage);
-            await persistMessage(craftedMessage);
-
+            updateReactiveChatHistory(craftedMessage);
             clearPromptText();
+            setIsBotTyping(true);
             setSendingPrompt(true);
+            scrollToBottom();
 
+            const settings = getDefaultSettings();
             const chatHistory: IAppConversation[] = (
                 await getPersistedMessages()
             ).filter(({ id }) => id !== craftedMessage.id);
-            const settings = getDefaultSettings();
+
             const aiMessage = await sendUserMessage({
                 userMessage,
                 chatHistory,
                 settings,
             });
-            if (aiMessage) {
-                await persistMessage(aiMessage);
-                appendToStatefulChatHistory(aiMessage);
+
+            if (!aiMessage) {
+                craftedMessage.messageUnsuccessful = true;
             }
-            setIsBotTyping(false);
+
+            await persistMessage(craftedMessage);
+            await persistMessage(aiMessage);
+
+            updateReactiveChatHistory(craftedMessage);
+            if (aiMessage) updateReactiveChatHistory(aiMessage);
+
             setSendingPrompt(false);
+            setIsBotTyping(false);
         },
         [promptText, sendingPrompt, persistMessage]
     );

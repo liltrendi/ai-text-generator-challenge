@@ -35,19 +35,26 @@ export const useLocalPersistence = () => {
         }
     }, []);
 
-    const persistMessage = useCallback(async (message: IAppConversation) => {
-        try {
-            const db = await createDatabase();
-            if (!db) {
-                throw new Error("Message was not saved");
+    const persistMessage = useCallback(
+        async (message: IAppConversation | null) => {
+            if (!message) return null;
+            try {
+                const db = await createDatabase();
+                if (!db) {
+                    throw new Error("Message was not saved");
+                }
+                await db.add(STORE_NAME, message);
+                return message;
+            } catch (e) {
+                triggerAlert({
+                    message: "Message was not saved",
+                    type: "error",
+                });
+                return null;
             }
-            await db.add(STORE_NAME, message);
-            return message;
-        } catch (e) {
-            triggerAlert({ message: "Message was not saved", type: "error" });
-            return null;
-        }
-    }, []);
+        },
+        []
+    );
 
     const getPersistedMessages = useCallback(async () => {
         try {

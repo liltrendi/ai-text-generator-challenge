@@ -2,11 +2,14 @@ import Image from "next/image";
 import { styled } from "styled-components";
 
 export const InputContainer = styled.div`
-    position: absolute;
+    background: ${({ theme }) => theme.colors.white};
+    position: fixed;
     padding: 20px 30px 20px 30px;
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 2;
+    width: 100%;
     @media only screen and (max-width: 600px) {
         padding: 15px 15px 15px 15px;
     }

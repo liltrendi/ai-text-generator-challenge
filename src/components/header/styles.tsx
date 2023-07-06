@@ -9,6 +9,10 @@ export const HeaderContainer = styled.header`
     border-bottom: 1px solid ${({ theme }) => theme.colors.lightWhite2};
     height: 75px;
     padding: 0 25px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+    background-color: ${({ theme }) => theme.colors.white};
     @media only screen and (max-width: 600px) {
         padding: 0 10px;
         height: 60px;

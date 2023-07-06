@@ -2,27 +2,19 @@ import { styled, keyframes } from "styled-components";
 import {
     TChatAvatarProps,
     TChatBubbleProps,
+    TChatTextIndicator,
     TChatTextProps,
     TChatWrapper,
 } from "@/components/chats/types";
 
-const DESKTOP_HEADER_HEIGHT = 75;
-const DESKTOP_PROMPT_HEIGHT = 94;
-const MOBILE_HEADER_HEIGHT = 60;
-const MOBILE_PROMPT_HEIGHT = 69;
-
 export const ChatWindow = styled.div`
     display: flex;
     flex-direction: column;
-    max-height: calc(
-        100vh - (${DESKTOP_HEADER_HEIGHT + DESKTOP_PROMPT_HEIGHT}px)
-    );
+    margin: 10px 0 75px 0;
     overflow-y: scroll;
-    padding: 20px 30px 20px 30px;
+    padding: 75px 30px 20px 30px;
     @media only screen and (max-width: 600px) {
-        max-height: calc(
-            100vh - (${MOBILE_HEADER_HEIGHT + MOBILE_PROMPT_HEIGHT + 15}px)
-        );
+        margin: 60px 0 75px 0;
         padding: 10px;
     }
 `;
@@ -87,6 +79,7 @@ export const ChatText = styled((props: TChatTextProps) => {
     const { chatOrigin, ...otherProps } = props;
     return <p {...otherProps} />;
 })(({ chatOrigin, theme }) => ({
+    position: "relative",
     background: theme.colors.lightWhite1,
     margin: chatOrigin === "assistant" ? "0 0 0 15px" : "0 15px 0 0",
     borderRadius: "12px",
@@ -96,6 +89,27 @@ export const ChatText = styled((props: TChatTextProps) => {
         margin: chatOrigin === "assistant" ? "0 0 0 8px" : "0 8px 0 0",
         fontSize: "16px",
     },
+}));
+
+export const ChatTextIndicator = styled((props: TChatTextIndicator) => {
+    // eslint-disable-next-line
+    const { chatOrigin, ...otherProps } = props;
+    return <span {...otherProps} />;
+})(({ chatOrigin, theme }) => ({
+    position: "absolute",
+    background: theme.colors.red,
+    color: theme.colors.white,
+    left: chatOrigin === "assistant" ? "-8px" : "inherit",
+    right: chatOrigin === "assistant" ? "inherit" : "-8px",
+    bottom: "-8px",
+    padding: "0 0 3px 0",
+    borderRadius: "50%",
+    fontSize: "16px",
+    width: "20px",
+    height: "20px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
 }));
 
 export const TypingContainer = styled.div`

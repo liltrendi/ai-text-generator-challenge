@@ -8,6 +8,7 @@ export interface IAppConversation {
     message: string;
     dateCreated: string;
     dateModified: null;
+    messageUnsuccessful?: boolean;
 }
 
 export interface IChatWindowProps {
@@ -48,5 +49,11 @@ export type TChatAvatarProps = DetailedHTMLProps<
 export type TChatTextProps = DetailedHTMLProps<
     HTMLAttributes<HTMLParagraphElement>,
     HTMLParagraphElement
+> &
+    IChatType;
+
+export type TChatTextIndicator = DetailedHTMLProps<
+    HTMLAttributes<HTMLSpanElement>,
+    HTMLSpanElement
 > &
     IChatType;

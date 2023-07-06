@@ -13,7 +13,7 @@ const Home = () => {
         chats,
         containerRef,
         scrollToBottom,
-        appendToStatefulChatHistory,
+        updateReactiveChatHistory,
         isBotTyping,
         setIsBotTyping,
     } = useChatHistory();
@@ -33,7 +33,7 @@ const Home = () => {
             />
             <Prompt
                 scrollToBottom={scrollToBottom}
-                appendToStatefulChatHistory={appendToStatefulChatHistory}
+                updateReactiveChatHistory={updateReactiveChatHistory}
                 setIsBotTyping={setIsBotTyping}
             />
         </AppContainer>
