@@ -43,9 +43,9 @@ export const serverError = ({ code, message, error }: IServerErrorResponse) => {
     return {
         statusCode: code,
         body: JSON.stringify({ message, error }),
-        // headers: {
-        //     "access-control-allow-origin": "*",
-        // },
+        headers: {
+            "access-control-allow-origin": "*",
+        },
     };
 };
 
@@ -53,8 +53,8 @@ export const serverSuccess = ({ code, body }: IServerSuccessResponse) => {
     return {
         statusCode: code,
         body,
-        // headers: {
-        //     "access-control-allow-origin": "*",
-        // },
+        headers: {
+            "access-control-allow-origin": "*",
+        },
     };
 };

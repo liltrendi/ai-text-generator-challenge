@@ -7,23 +7,14 @@ import {
     TChatWrapper,
 } from "@/components/chats/types";
 
-const DESKTOP_HEADER_HEIGHT = 75;
-const DESKTOP_PROMPT_HEIGHT = 94;
-const MOBILE_HEADER_HEIGHT = 60;
-const MOBILE_PROMPT_HEIGHT = 69;
-
 export const ChatWindow = styled.div`
     display: flex;
     flex-direction: column;
-    max-height: calc(
-        100vh - (${DESKTOP_HEADER_HEIGHT + DESKTOP_PROMPT_HEIGHT}px)
-    );
+    margin: 10px 0 75px 0;
     overflow-y: scroll;
-    padding: 20px 30px 20px 30px;
+    padding: 75px 30px 20px 30px;
     @media only screen and (max-width: 600px) {
-        max-height: calc(
-            100vh - (${MOBILE_HEADER_HEIGHT + MOBILE_PROMPT_HEIGHT + 15}px)
-        );
+        margin: 60px 0 75px 0;
         padding: 10px;
     }
 `;

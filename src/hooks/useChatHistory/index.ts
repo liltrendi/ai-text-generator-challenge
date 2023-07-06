@@ -10,14 +10,6 @@ export const useChatHistory = () => {
     const [loading, setLoading] = useState<boolean>(true);
     const [isBotTyping, setIsBotTyping] = useState<boolean>(false);
 
-    useEffect(() => {
-        (async () => {
-            const messages = await getPersistedMessages();
-            setChats(messages);
-            setLoading(false);
-        })();
-    }, []);
-
     const scrollToBottom = useCallback(() => {
         const element = containerRef.current;
         if (!element) return;
@@ -25,7 +17,19 @@ export const useChatHistory = () => {
             top: element.scrollHeight,
             behavior: "smooth",
         });
+        window.scrollTo({
+            top: element.scrollHeight,
+            behavior: "smooth",
+        });
     }, [containerRef, chats]);
+
+    useEffect(() => {
+        (async () => {
+            const messages = await getPersistedMessages();
+            setChats(messages);
+            setLoading(false);
+        })();
+    }, []);
 
     useEffect(() => {
         scrollToBottom();
