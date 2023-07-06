@@ -5,7 +5,7 @@ import { IUsePromptArgs } from "@/hooks/usePrompt/types";
 
 export const usePrompt = ({
     scrollToBottom,
-    appendToStatefulChatHistory,
+    updateReactiveChatHistory,
     setIsBotTyping,
 }: IUsePromptArgs) => {
     const { promptText, setPromptText, clearPromptText } = usePromptState();
@@ -18,7 +18,7 @@ export const usePrompt = ({
         setPromptText,
         clearPromptText,
         scrollToBottom,
-        appendToStatefulChatHistory,
+        updateReactiveChatHistory,
         setIsBotTyping,
     });
     usePromptEvents(handlePromptSubmitOnEnter);

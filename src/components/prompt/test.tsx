@@ -28,7 +28,7 @@ describe("<Prompt />", () => {
             <ThemeProvider theme={theme}>
                 <Prompt
                     scrollToBottom={() => ({})}
-                    appendToStatefulChatHistory={() => ({})}
+                    updateReactiveChatHistory={() => ({})}
                     setIsBotTyping={() => {}}
                 />
             </ThemeProvider>

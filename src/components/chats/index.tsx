@@ -4,6 +4,7 @@ import {
     ChatAvatar,
     ChatBubble,
     ChatText,
+    ChatTextIndicator,
     ChatWindow,
     ChatWrapper,
     EmptyMessage,
@@ -41,12 +42,20 @@ const Chats: FC<IChatWindowProps> = ({ chats, containerRef, isBotTyping }) => {
                                         ? "AI"
                                         : getUserInitials(user)}
                                 </ChatAvatar>
-                                <ChatText
-                                    chatOrigin={item.origin}
-                                    dangerouslySetInnerHTML={{
-                                        __html: item.message,
-                                    }}
-                                />
+                                <ChatText chatOrigin={item.origin}>
+                                    <span
+                                        dangerouslySetInnerHTML={{
+                                            __html: item.message,
+                                        }}
+                                    />
+                                    {item?.messageUnsuccessful && (
+                                        <ChatTextIndicator
+                                            chatOrigin={item.origin}
+                                        >
+                                            &times;
+                                        </ChatTextIndicator>
+                                    )}
+                                </ChatText>
                             </ChatWrapper>
                         </ChatBubble>
                     );

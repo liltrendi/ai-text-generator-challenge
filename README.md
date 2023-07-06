@@ -156,6 +156,12 @@ Install dependencies
   npm install
 ```
 
+Configure husky for precommit and linting hooks:
+
+```bash
+  npm run setup
+```
+
 Start the server
 
 ```bash

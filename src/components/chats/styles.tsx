@@ -2,6 +2,7 @@ import { styled, keyframes } from "styled-components";
 import {
     TChatAvatarProps,
     TChatBubbleProps,
+    TChatTextIndicator,
     TChatTextProps,
     TChatWrapper,
 } from "@/components/chats/types";
@@ -87,6 +88,7 @@ export const ChatText = styled((props: TChatTextProps) => {
     const { chatOrigin, ...otherProps } = props;
     return <p {...otherProps} />;
 })(({ chatOrigin, theme }) => ({
+    position: "relative",
     background: theme.colors.lightWhite1,
     margin: chatOrigin === "assistant" ? "0 0 0 15px" : "0 15px 0 0",
     borderRadius: "12px",
@@ -96,6 +98,27 @@ export const ChatText = styled((props: TChatTextProps) => {
         margin: chatOrigin === "assistant" ? "0 0 0 8px" : "0 8px 0 0",
         fontSize: "16px",
     },
+}));
+
+export const ChatTextIndicator = styled((props: TChatTextIndicator) => {
+    // eslint-disable-next-line
+    const { chatOrigin, ...otherProps } = props;
+    return <span {...otherProps} />;
+})(({ chatOrigin, theme }) => ({
+    position: "absolute",
+    background: theme.colors.red,
+    color: theme.colors.white,
+    left: chatOrigin === "assistant" ? "-8px" : "inherit",
+    right: chatOrigin === "assistant" ? "inherit" : "-8px",
+    bottom: "-8px",
+    padding: "0 0 3px 0",
+    borderRadius: "50%",
+    fontSize: "16px",
+    width: "20px",
+    height: "20px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
 }));
 
 export const TypingContainer = styled.div`

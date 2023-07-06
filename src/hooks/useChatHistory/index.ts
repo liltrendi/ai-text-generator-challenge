@@ -31,11 +31,14 @@ export const useChatHistory = () => {
         scrollToBottom();
     }, [chats, containerRef]);
 
-    const appendToStatefulChatHistory = useCallback(
+    const updateReactiveChatHistory = useCallback(
         (message: IAppConversation) => {
-            const duplicate = chats.find(({ id }) => id === message.id);
-            if (duplicate) return;
-            setChats(previous => [...previous, message]);
+            setChats((previousChats: IAppConversation[]) => {
+                const withoutDuplicates = previousChats.filter(
+                    ({ id }) => id !== message.id
+                );
+                return [...withoutDuplicates, message];
+            });
         },
         [chats]
     );
@@ -43,7 +46,7 @@ export const useChatHistory = () => {
     return {
         loading,
         chats,
-        appendToStatefulChatHistory,
+        updateReactiveChatHistory,
         containerRef,
         scrollToBottom,
         isBotTyping,
