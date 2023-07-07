@@ -192,8 +192,8 @@ export const isValidPromptText = (promptText: string | undefined) => {
 export const getDefaultSettings = () => {
     const fallbackConfig: ISettingsConfig = {
         temperature: 0.5,
-        tone: "informal",
-        outputLength: "About 200 words or less",
+        tone: "happy and witty",
+        outputLength: "Brief, at most 2 sentences",
     };
     try {
         const settings = localStorage.getItem(LOCAL_STORAGE_SETTINGS_KEY);

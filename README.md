@@ -150,13 +150,7 @@ Go to the project directory
   cd ai-text-generator-challenge
 ```
 
-Install dependencies
-
-```bash
-  npm install
-```
-
-Configure husky for precommit and linting hooks:
+Run the setup script which installs dependencies and configures the dev environment:
 
 ```bash
   npm run setup
