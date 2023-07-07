@@ -1,6 +1,6 @@
 import { Handler, HandlerEvent } from "@netlify/functions";
 import { Configuration, OpenAIApi } from "openai";
-import { ILambdaBody } from "./types";
+import { ILambdaBody } from "./utils/types";
 import { buildChatContext, serverError, serverSuccess } from "./utils";
 
 const openAi = new OpenAIApi(
