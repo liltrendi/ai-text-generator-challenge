@@ -86,6 +86,18 @@ This web app is hosted on [Netlify](https://netlify.com) (crucial choice as I ne
   </ul>
 </details>
 
+<details>
+  <summary>Dev</summary>
+  <ul>
+    <li><a href="https://typicode.github.io/husky/">Husky</a> - workflow automation</li>
+    <li><a href="https://eslint.org/">Eslint</a> - static code analysis</li>
+    <li><a href="https://commitlint.js.org/">Commitlint</a> - conventional commit messages</li>
+    <li><a href="https://prettier.io">Prettier</a> - code formatter</li>
+    <li><a href="https://testing-library.com/docs/react-testing-library/intro/">React Testing Library</a> - unit and integration tests</li>
+    <li><a href="https://react-hooks-testing-library.com">React Hooks Testing Library</a> - testing custom hooks</li>
+  </ul>
+</details>
+
 <!-- Features -->
 
 ### :dart: Features
